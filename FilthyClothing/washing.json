@@ -1,0 +1,31 @@
+[
+  {
+    "id": "ACT_CLEAN",
+    "type": "activity_type",
+    "verb": "cleaning",
+    "suspendable": false,
+    "rooted": true,
+    "auto_needs": true,
+    "verbose_tooltip": false,
+    "bubble_size_effect": "idle",
+  },
+  { "type": "item_action", "id": "LUA_WASH", "name": { "str": "Wash items" } },
+  {
+    "id": "morale_clothing_freshness",
+    "type": "morale_type",
+    "text": "Clothing freshness",
+  },
+  {
+    "id": "duck_cleaning_requirement",
+    "type": "requirement",
+    "components": [
+      [ [ "water_clean", 1 ] ],
+      [
+        [ "soap_flakes", 2 ],
+        [ "soapy_water", 1 ],
+        [ "soap", 1 ],
+        [ "detergent", 1 ],
+      ],
+    ],
+  },
+]

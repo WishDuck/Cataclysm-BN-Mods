@@ -1,0 +1,23 @@
+[
+  {
+    "id": "washboard",
+    "type": "GENERIC",
+    "name": { "str": "washboard" },
+    "copy-from": "washboard",
+    "use_action": "LUA_WASH",
+  },
+  {
+    "id": "sponge",
+    "type": "GENERIC",
+    "name": { "str": "sponge" },
+    "copy-from": "sponge",
+    "use_action": "LUA_WASH",
+  },
+  {
+    "id": "wash_kit",
+    "type": "GENERIC",
+    "name": { "str": "washing kit" },
+    "copy-from": "wash_kit",
+    "use_action": "LUA_WASH",
+  },
+]

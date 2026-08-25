@@ -1,0 +1,20 @@
+[
+  {
+    "id": "FILTHY",
+    "type": "json_flag",
+    "info": "This clothing is <bad>filthy</bad> and is <info>very unpleasant to wear</info>.",
+    "context": [],
+    "craft_inherit": true,
+    "inherit": true,
+    "tag": "(filthy)",
+  },
+  {
+    "id": "CLEAN",
+    "type": "json_flag",
+    "info": "This clothing is <good>refreshingly clean</good> and is <info>pleasant to wear</info>.",
+    "context": [],
+    "craft_inherit": true,
+    "inherit": true,
+    "tag": "(clean)",
+  },
+]
