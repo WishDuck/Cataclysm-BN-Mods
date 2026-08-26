@@ -15,7 +15,14 @@ local time_per_cleaning_charge = 30000
 
 local minutes_30 = TimeDuration.from_minutes(30)
 
+-- Item Vars
 local dirty_var = "DUCK_DIRTY"
+
+-- Enchantment values
+local ench_val_DIRTY_MORALE = EnchantmentValueId.new("DUCK_CLOTHING_MORALE_DIRTY")
+local ench_val_NORM_MORALE = EnchantmentValueId.new("DUCK_CLOTHING_MORALE_NORMAL")
+local ench_val_CLEAN_MORALE = EnchantmentValueId.new("DUCK_CLOTHING_MORALE_CLEAN")
+local ench_val_CLOTHING_DIRTY = EnchantmentValueId.new("DUCK_CLOTHING_TIME_DIRTY")
 
 make_dirty = function(item)
   if item:has_flag(flag_CLEAN) then
@@ -25,13 +32,16 @@ make_dirty = function(item)
   end
 end
 
-clean_morale_mod = function(item)
+clean_morale_mod = function(ch, item)
   if item:has_flag(flag_FILTHY) then
-    return -15
+    local base = -15
+    return base + ch:bonus_from_enchantments(base, ench_val_DIRTY_MORALE)
   elseif item:has_flag(flag_CLEAN) then
-    return 10
+    local base = 10
+    return base + ch:bonus_from_enchantments(base, ench_val_CLEAN_MORALE)
   end
-  return 0
+  local base = 0
+  return base + ch:bonus_from_enchantments(base, ench_val_NORM_MORALE)
 end
 
 morale_postprocess = function(morale)
@@ -43,20 +53,24 @@ end
 mod.give_morale_and_sweat = function(info)
   --gapi.add_msg("Every minute I add a message!")
 
-  local worn_items = gapi:get_avatar():get_worn_items()
+  local avatar = gapi:get_avatar()
+
+  local worn_items = avatar:get_worn_items()
 
   local morale = 0
 
+  local dirty_mod = 1
+  dirty_mod = dirty_mod + avatar:bonus_from_enchantments(dirty_mod, ench_val_CLOTHING_DIRTY)
   for index, item in pairs(worn_items) do
     local dirtiness = item:get_var_num(dirty_var, 0)
     if gapi.rng(24, 1024) <= dirtiness then
       make_dirty(item)
       dirtiness = 0
     else
-      dirtiness = dirtiness + 1
+      dirtiness = dirtiness + dirty_mod
     end
     item:set_var_num(dirty_var, dirtiness)
-    morale = morale + clean_morale_mod(item)
+    morale = morale + clean_morale_mod(avatar, item)
   end
 
   morale = morale_postprocess(morale)
@@ -72,14 +86,14 @@ mod.make_clothing_dirty = function(info)
   end
 end
 
-present_error = function(error)
+present_error = function(error, desc)
   local ui_error = UiList.new()
   ui_error:title_color(Color.c_white)
   ui_error:border_color(Color.c_white)
   ui_error:desc_enabled(true)
   ui_error:text(error)
-  ui_error:add(0, locale.gettext("Continue"))
-  ui_error:add(1, locale.gettext("Quit"))
+  ui_error:add_w_desc(0, locale.gettext("Continue"), desc)
+  ui_error:add_w_desc(1, locale.gettext("Quit"), desc)
   local query = ui_error:query()
   gapi.add_msg(query)
   return query
@@ -119,7 +133,7 @@ mod.wash = function(params)
     local crafting_inv = user:crafting_inventory()
 
     if not cleaning_requirements:can_make_with_inventory(crafting_inv) then
-      if present_error(locale.gettext("Insufficient cleaning supplies to clean this item")) == 1 then break end
+      if present_error(locale.gettext("Insufficient cleaning supplies to clean this item"), cleaning_requirements:list_missing()) == 1 then break end
     else
       if user:consume_requirement(cleaning_requirements, {}) then
         cleaning_time = cleaning_time + time_per_cleaning_charge * get_cleaning_charges(item)

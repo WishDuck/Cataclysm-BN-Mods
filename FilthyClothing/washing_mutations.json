@@ -1,0 +1,38 @@
+[
+  {
+    "type": "mutation",
+    "id": "DUCK_SQUEAMISH",
+    "name": { "str": "Squeamish" },
+    "points": -1,
+    "starting_trait": true,
+    "description": "You absolutely hate putting filthy clothes on yourself, especially from zombies' corpses.",
+    "mut_enchantments": [ { "values": [ { "value": "DUCK_CLOTHING_MORALE_DIRTY", "multiply": 4 } ] } ]
+  },
+  {
+    "type": "mutation",
+    "id": "DUCK_CLEAN_ONLY",
+    "name": { "str": "Immaculate" },
+    "points": -2,
+    "starting_trait": true,
+    "description": "One spec of dirt on your outfit and you need to clean it. You absolutely hate putting on not perfectly cleaned clothes.",
+    "mut_enchantments": [ { "values": [
+      { "value": "DUCK_CLOTHING_MORALE_DIRTY", "multiply": 3 },
+      { "value": "DUCK_CLOTHING_MORALE_NORMAL", "add": -15 }
+    ] } ]
+  },
+  {
+    "type": "mutation",
+    "id": "DUCK_SWEATY",
+    "name": { "str": "Sweaty" },
+    "points": -1,
+    "starting_trait": true,
+    "description": "You sweat more then most people. Causing your clothes to become unclean much faster then normal. On the bright side, you tolerate higher temperatures better then most",
+    "mut_enchantments": [ {
+      "values": [
+        { "value": "DUCK_CLOTHING_TIME_DIRTY", "multiply": 1 },
+        { "value": "THIRST", "multiply": 0.15 },
+        { "value": "CLIMATE_CONTROL_COOLING", "add": 150 }
+      ] } ]
+    
+  }
+]
