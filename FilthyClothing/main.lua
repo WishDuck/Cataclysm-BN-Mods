@@ -10,7 +10,8 @@ local clothing_morale = MoraleTypeDataId.new("morale_clothing_freshness")
 
 local cleaning_requirement_id = "duck_cleaning_requirement"
 
-local time_per_cleaning_charge = 1500
+-- 5 minutes
+local time_per_cleaning_charge = 30000
 
 local minutes_30 = TimeDuration.from_minutes(30)
 
