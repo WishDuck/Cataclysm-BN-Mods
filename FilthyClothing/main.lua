@@ -10,6 +10,7 @@ local clothing_morale = MoraleTypeDataId.new("morale_clothing_freshness")
 
 local cleaning_requirement_id = "duck_cleaning_requirement"
 
+local flesh = MaterialTypeId.new( "flesh" )
 -- 5 minutes
 local time_per_cleaning_charge = 30000
 
@@ -79,10 +80,12 @@ mod.give_morale_and_sweat = function(info)
 end
 
 mod.make_clothing_dirty = function(info)
-  local position = info["mon"]:get_pos_ms()
-  local items = gapi.get_map():get_items_at(position):as_item_stack():items()
-  for index, item in pairs(items) do
-    if item:is_armor() then make_dirty(item) end
+  if info["mon"]:made_of( flesh ) then
+    local position = info["mon"]:get_pos_ms()
+    local items = gapi.get_map():get_items_at(position):as_item_stack():items()
+    for index, item in pairs(items) do
+      if item:is_armor() then make_dirty(item) end
+    end
   end
 end
 
