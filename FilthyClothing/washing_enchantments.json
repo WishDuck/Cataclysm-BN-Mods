@@ -3,7 +3,7 @@
     "id": "DUCK_CLOTHING_TIME_DIRTY",
     "type": "enchantment_value",
     "desc": "Affects how long it takes for clothing to become dirty again",
-    "increase_good": false
+    "increase_good": false,
   },
   {
     "id": "DUCK_CLOTHING_MORALE",
@@ -14,9 +14,8 @@
       [
         { "suffix": "DIRTY", "desc_insert": [ "dirty" ] },
         { "suffix": "CLEAN", "desc_insert": [ "clean" ] },
-        { "suffix": "NORMAL", "desc_insert": [ "neither clean nor dirty" ] }
-      ]
-    ]
-  }
+        { "suffix": "NORMAL", "desc_insert": [ "neither clean nor dirty" ] },
+      ],
+    ],
+  },
 ]
-

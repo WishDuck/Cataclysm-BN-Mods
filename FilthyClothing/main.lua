@@ -10,7 +10,7 @@ local clothing_morale = MoraleTypeDataId.new("morale_clothing_freshness")
 
 local cleaning_requirement_id = "duck_cleaning_requirement"
 
-local flesh = MaterialTypeId.new( "flesh" )
+local flesh = MaterialTypeId.new("flesh")
 -- 5 minutes
 local time_per_cleaning_charge = 30000
 
@@ -51,6 +51,44 @@ morale_postprocess = function(morale)
   return res
 end
 
+local reset_morale_val = function(avatar)
+  local worn_items = avatar:get_worn_items()
+
+  local morale = 0
+
+  for index, item in pairs(worn_items) do
+    morale = morale + clean_morale_mod(avatar, item)
+  end
+
+  return morale
+end
+
+mod.reset_morale_val_exclude = function(params)
+  local avatar = params.who
+  local item = params.item
+  local morale = reset_morale_val(avatar)
+
+  if avatar:is_worn(item) then morale = morale - clean_morale_mod(avatar, item) end
+
+  morale = morale_postprocess(morale)
+
+  avatar:rem_morale(clothing_morale)
+  avatar:add_morale(clothing_morale, morale, morale, minutes_30, minutes_30, false)
+end
+
+mod.reset_morale_val_include = function(params)
+  local avatar = params.who
+  local item = params.item
+  local morale = reset_morale_val(avatar)
+
+  if not avatar:is_worn(item) then morale = morale + clean_morale_mod(avatar, item) end
+
+  morale = morale_postprocess(morale)
+
+  avatar:rem_morale(clothing_morale)
+  avatar:add_morale(clothing_morale, morale, morale, minutes_30, minutes_30, false)
+end
+
 mod.give_morale_and_sweat = function(info)
   --gapi.add_msg("Every minute I add a message!")
 
@@ -76,11 +114,12 @@ mod.give_morale_and_sweat = function(info)
 
   morale = morale_postprocess(morale)
 
-  gapi:get_avatar():add_morale(clothing_morale, morale, morale, minutes_30, minutes_30, false)
+  avatar:rem_morale(clothing_morale)
+  avatar:add_morale(clothing_morale, morale, morale, minutes_30, minutes_30, false)
 end
 
 mod.make_clothing_dirty = function(info)
-  if info["mon"]:made_of( flesh ) then
+  if info["mon"]:made_of(flesh) then
     local position = info["mon"]:get_pos_ms()
     local items = gapi.get_map():get_items_at(position):as_item_stack():items()
     for index, item in pairs(items) do
@@ -136,7 +175,14 @@ mod.wash = function(params)
     local crafting_inv = user:crafting_inventory()
 
     if not cleaning_requirements:can_make_with_inventory(crafting_inv) then
-      if present_error(locale.gettext("Insufficient cleaning supplies to clean this item"), cleaning_requirements:list_missing()) == 1 then break end
+      if
+        present_error(
+          locale.gettext("Insufficient cleaning supplies to clean this item"),
+          cleaning_requirements:list_missing()
+        ) == 1
+      then
+        break
+      end
     else
       if user:consume_requirement(cleaning_requirements, {}) then
         cleaning_time = cleaning_time + time_per_cleaning_charge * get_cleaning_charges(item)
