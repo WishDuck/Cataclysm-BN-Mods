@@ -187,6 +187,7 @@ mod.wash = function(params)
       if user:consume_requirement(cleaning_requirements, {}) then
         cleaning_time = cleaning_time + time_per_cleaning_charge * get_cleaning_charges(item)
         clean_item(to_clean)
+        user:invalidate_crafting_inventory()
       end
     end
   end
