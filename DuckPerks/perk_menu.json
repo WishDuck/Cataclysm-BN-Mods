@@ -1,0 +1,24 @@
+[
+  {
+    "type": "item_action",
+    "id": "DUCK_PERK_MENU",
+    "name": { "str": "Open the perks menu" }
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_menu_opener",
+    "name": "Menu Opener",
+    "description": "You should never see this.",
+    "hidden": true,
+    "category": "Perk",
+    "enchantments": [ { "fake_items": [ "duck_perk_menu_opener_item" ] } ],
+  },
+  {
+    "id": "duck_perk_menu_opener_item",
+    "copy-from": "fake_item",
+    "type": "TOOL",
+    "name": { "str_sp": "Open Perk Menu" },
+    "flags": [ "TRADER_AVOID", "ENCHANTMENT_TOOLS" ],
+    "use_action": [ "DUCK_PERK_MENU" ],
+  },
+]

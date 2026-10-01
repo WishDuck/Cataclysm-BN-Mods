@@ -1,0 +1,12 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "duck_perks",
+    "name": "<color_magenta>Duck Perks</color>",
+    "authors": [ "Wishduck" ],
+    "description": "Mod that adds perks on levels for characters. Takes inspiration and directly ports some of DDA's mod 'Bombastic Perks', but will differ more over time.",
+    "category": "misc_additions",
+    "dependencies": [ "bn" ],
+    "lua_api_version": 2,
+  },
+]

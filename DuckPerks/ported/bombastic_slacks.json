@@ -1,0 +1,45 @@
+[
+  {
+    "//": "NOTE: Stat perks are merged into 1 +2 perk vs 2 perks totalling +3",
+    "type": "perk",
+    "id": "duck_perk_str_up",
+    "name": "Stronger",
+    "description": "Have you been working out?  +2 Strength.",
+    "category": "Perk",
+    "enchantments": [ { "values": [ { "value": "STRENGTH", "add": 2 } ] } ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_dex_up",
+    "name": "Faster",
+    "description": "Have you been doing cardio?  +2 Dexterity.",
+    "category": "Perk",
+    "enchantments": [ { "values": [ { "value": "DEXTERITY", "add": 2 } ] } ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_int_up",
+    "name": "Smarter",
+    "description": "Have you been reading?  +2 Intelligence.",
+    "category": "Perk",
+    "enchantments": [ { "values": [ { "value": "INTELLIGENCE", "add": 2 } ] } ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_per_up",
+    "name": "Sharper",
+    "description": "Have you been staring into the distance?  +2 Perception.",
+    "category": "Perk",
+    "enchantments": [ { "values": [ { "value": "PERCEPTION", "add": 2 } ] } ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_built_tough",
+    "name": "Built Tough",
+    "description": "You're like a walking tank!  Take 5% less damage from all sources.",
+    "category": "Perk",
+    "enchantments": [
+      { "values": [ { "value": "ARMOR", "multiply": -0.05 } ] },
+    ],
+  },
+]

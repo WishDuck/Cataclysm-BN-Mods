@@ -1,0 +1,11 @@
+[
+  {
+    "type": "mutation",
+    "id": "DUCK_DEBUG_ALLTRAITS",
+    "name": { "str": "Debug Perkful" },
+    "points": 99,
+    "valid": false,
+    "description": "Trying to cheat are ya?",
+    "debug": true
+  }
+]

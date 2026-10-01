@@ -1,0 +1,463 @@
+[
+  {
+    "type": "perk",
+    "id": "duck_perk_sight_beyond_sight",
+    "name": "Sight Beyond Sight",
+    "description": "Ever since that portal opened, you felt slight tingles around otherworldly beings. Now you think you can put it to good use.",
+    "category": "Perk",
+    "enchantments": [ { "special_vision": [ "DUCK_SIGHT_BEYOND_SIGHT" ] } ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_eagle_eyes",
+    "name": "Eagle Eyes",
+    "description": "Your sharp gazes misses little. +25% to unenhanced sight range",
+    "category": "Perk",
+    "enchantments": [
+      { "values": [ { "value": "SIGHT_RANGE", "multiply": 0.25 } ] },
+    ],
+    "//": "Incomplete: Percussive Entry; Reason: lack of smash hooks",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_thick_skin",
+    "name": "Thick Skin",
+    "description": "All the beatings you've taken have toughened you up. You develop blisters in heat much more slowly, and take slightly less bash damage.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "values": [
+          { "value": "ARMOR_BASH", "add": -2 },
+          { "value": "BLISTER_COUNT", "add": -5 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "effect_type",
+    "id": "duck_perk_effect_bellringer",
+    "name": [ "Rung a Bell" ],
+    "desc": [ "You just rung a bell, lets ring it harder next time." ],
+    "base_enchantments": [
+      { "values": [ { "value": "MELEE_DAMAGE_BASH", "multiply": 0.33 } ] },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_bellringer",
+    "name": "Bellringer",
+    "description": "You're very good at the follow-through when your enemies are reeling.  Right after attacking a stunned or dazed target, your next attack does 33% more bash damage.",
+    "category": "Perk",
+    "//1": "NOTE: Effect given by on hitting melee target, checking for stunned, downd for perk on character.",
+    "//2": "NOTE: Reason why it is not applied to target is there is no damage mult on target effects at this point.",
+  },
+  {
+    "//": "Vengeful",
+    "type": "SPELL",
+    "id": "duck_perk_gain_effect_vengeful",
+    "name": { "str": "Vengeful Activator" },
+    "description": "Causes ",
+    "valid_targets": [ "self" ],
+    "effect": "target_attack",
+    "effect_str": "duck_perk_effect_vengance",
+    "min_duration": 2,
+    "max_duration": 2,
+  },
+  {
+    "type": "effect_type",
+    "id": "duck_perk_effect_vengeful",
+    "name": [ "Vengance" ],
+    "desc": [ "They just HIT YOU, time to show them who's better at combat" ],
+    "base_enchantments": [
+      {
+        "values": [
+          { "value": "MELEE_DAMAGE", "multiply": 0.15 },
+          { "value": "RANGED_DAMAGE", "multiply": 0.15 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_vengeful",
+    "name": "Vengeful",
+    "description": "Oh, they're not getting away with THAT.  You do +15% damage for two turns after you're hit.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "hit_me_effect": [
+          { "id": "duck_perk_gain_vengance", "hit_self": true },
+        ],
+      },
+    ],
+  },
+  {
+    "//": "Twice shy",
+    "type": "SPELL",
+    "id": "duck_perk_gain_twice_shy",
+    "name": { "str": "Twice Shy Activator" },
+    "description": "Causes ",
+    "valid_targets": [ "self" ],
+    "effect": "target_attack",
+    "effect_str": "duck_perk_effect_twice_shy",
+    "min_duration": 5,
+    "max_duration": 5,
+  },
+  {
+    "type": "effect_type",
+    "id": "duck_perk_effect_twice_shy",
+    "name": [ "Twice Shy" ],
+    "desc": [
+      "That first time really smarts.  +2 effective dodge, +1 dodge attempt.",
+    ],
+    "base_enchantments": [
+      {
+        "values": [
+          { "value": "BONUS_DODGE", "add": 1 },
+          { "value": "SKILL_LEVEL_DODGE", "add": 2 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_twice_shy",
+    "name": "Twice Shy",
+    "description": "Pain is really painful; best to avoid it.  For five turns after you are hit, you gain +1 bonus dodge and +2 dodge skill.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "hit_me_effect": [
+          { "id": "duck_perk_gain_twice_shy", "hit_self": true },
+        ],
+      },
+    ],
+    "//": "Incomplete: Undying Loyalty; Reason, condition requires effecting allies, too much perf cost.",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_ghost_stealth",
+    "name": "Ghost",
+    "description": "You've gotten pretty good at sneaking up on people. So long as there aren't distactions nearby...",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_NO_ALLIED_NPCS_IN_BUBBLE" ],
+        "values": [ { "value": "STEALTH", "add": 15 } ],
+      },
+    ],
+    "//": "Incomplete: Big Eater; Reason: doesn't make sense for cataclysm.",
+  },
+  {
+    "//1": "This and Tuck and Roll are nearly identical -> thus taken as one",
+    "type": "perk",
+    "id": "duck_perk_catfall",
+    "name": "Catfall",
+    "description": "You always land on your feet and look graceful when doing it.",
+    "category": "Perk",
+    "enchantments": [
+      { "values": [ { "value": "FALL_DAMAGE_MULT", "multiply": -0.4 } ] },
+    ],
+    "//2": "Unported: Grit Your Teeth & Slippery Escape; Reason: Activatable, dont seem that powerful",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_perfect_time",
+    "name": "Perfect Timing",
+    "description": "You used to annoy your friends before the Cataclysm by always being *exactly* on time and you've maintained that characteristic to this day.  You always know what time it is and can set alarms even without a watch or a phone.",
+    "category": "Perk",
+    "enchantments": [ { "flags": [ "WATCH", "INTERNAL_ALARMCLOCK" ] } ],
+  },
+  {
+    "//": "Uncanny Dodge perk",
+    "type": "SPELL",
+    "id": "duck_perk_no_uncanny_dodge",
+    "name": { "str": "Uncanny Dodge Preventer" },
+    "description": "Prevents enchantment based uncanny dodge",
+    "valid_targets": [ "self" ],
+    "effect": "target_attack",
+    "effect_str": "duck_perk_effect_no_uncanny_dodge",
+    "min_duration": 30,
+    "max_duration": 30,
+  },
+  {
+    "type": "effect_type",
+    "id": "duck_perk_effect_no_uncanny_dodge",
+    "name": [ "Lost Evasion" ],
+    "desc": [ "You currently cannot evade beyond normalicy" ],
+    "max_duration": "30 s",
+    "show_in_info": true,
+    "base_enchantments": [
+      { "values": [ { "value": "UNCANNY_DODGE", "add": -0.2 } ] },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_uncanny_dodge",
+    "name": "Evasion",
+    "description": "You're so good at dodging that almost nothing can touch you as long as you're on your game.  You have some passive Uncanny Dodge until you take an up close attack, after which it takes a good few seconds for you to recover.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "hit_me_effect": [ { "id": "duck_perk_spell_no_uncanny_dodge" } ],
+        "values": [ { "value": "UNCANNY_DODGE", "add": 0.2 } ],
+      },
+    ],
+  },
+  {
+    "type": "TOOL",
+    "id": "duck_perk_fake_item_safety_squint",
+    "copy-from": "fake_item",
+    "name": { "str_sp": "safety squint" },
+    "flags": [ "TRADER_AVOID", "ENCHANTMENT_TOOLS" ],
+    "qualities": [ [ "GLARE", 2 ] ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_safety_squint",
+    "name": "The Safety Squint",
+    "description": "They told it to you as a joke, but you always knew it was real and now you've figured out how to do it.  With the proper squinting technique, you can safely weld without any external protection.",
+    "category": "Perk",
+    "enchantments": [
+      { "fake_items": [ "duck_perk_fake_item_safety_squint" ] },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_bedtime_reader",
+    "name": "Bedtime Stories",
+    "description": "You've always loved reading, especially before you fall asleep, and have gotten very good at tearing through books as a way to wind down.  You read books 50% faster, but only when you read them while tired",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_SLEEPY" ],
+        "values": [ { "value": "READING_SPEED", "multiply": -0.5 } ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_static_stockpile",
+    "name": "Static Stockpile",
+    "description": "You can't touch a door without zapping yourself.  Whenever there is a shocker or a robot within 15 squares, or you are outside during a storm, you gain 500J of bionic power per second and your melee attacks will do a small amount of extra electrical damage.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "conditions": [ "OUTSIDE", "DUCK_NEAR_ELECTRICITY" ],
+        "values": [
+          { "value": "PASSIVE_BIONIC_POWER", "add": 500 },
+          { "value": "MELEE_DAMAGE_ELECTRIC", "add": 5 },
+        ],
+      },
+    ],
+    "//": "Unported: Quick recovery & Slippery Escape; Reason: too powerful",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_easy_sleeper",
+    "name": "Easy Sleeper",
+    "description": "You've always been able to fall asleep within a few minutes of closing your eyes, no matter what else is going on around you.  You have a much easier time falling asleep.",
+    "category": "Perk",
+    "enchantments": [ { "values": [ { "value": "SLEEPY", "add": 15 } ] } ],
+    "//": "Unported: Running in heels; Reason: hard to justify",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_early_to_rise",
+    "name": "Early to Rise",
+    "description": "That health, wealth, and wisdom is coming any day now.  When you wake up between 4 and 7 a.m., you gain a mood boost for that morning.",
+    "category": "Perk",
+    "//": "Gives morale boost upon 5 minute checks showing going from sleep -> awake at 4-7 AM",
+  },
+  {
+    "type": "effect_type",
+    "id": "duck_perk_effect_duck_and_weave",
+    "name": [ "Ducked and Woven" ],
+    "desc": [
+      "Your movements are chaotic enough that you gain effective dodge and bonus dodges.",
+    ],
+    "max_duration": "5 s",
+    "base_enchantments": [
+      {
+        "values": [
+          { "value": "SKILL_LEVEL_DODGE", "add": 3 },
+          { "value": "BONUS_DODGE", "add": 1 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_duck_and_weave",
+    "name": "Duck and Weave",
+    "description": "Run without rhythm.  After a short wind-up period, you gain 5 effective dodge and +1 bonus dodge attempt as long as you keep running.",
+    "category": "Perk",
+    "//1": "Gives above effect via on-move hook",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_non_combatant",
+    "name": "Non-Combatant",
+    "description": "Hey, that's against the Geneva Convention!  When completely unarmed, you take -25% reduced damage.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_WIELDED_NONE" ],
+        "values": [ { "value": "ARMOR", "multiply": -0.25 } ],
+      },
+    ],
+    "//1": "Unported: Second Wind; Reason, active effect",
+    "//2": "Unported: Hemophage & The Blood is the Life; Reason: doesn't thematically make sense ( maybe a patchmod? )",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_fancy_footwork",
+    "name": "Fancy Footwork",
+    "description": "Ho!  Ha-Ha!  Guard!  Turn!  Parry!  Dodge!  Spin!  Ha!  Thrust!  When wielding a fencing weapon, you gain +1 bonus dodge and slightly reduced move cost on flat terrain.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_WIELDED_FENCING" ],
+        "values": [
+          { "value": "BONUS_DODGE", "add": 1 },
+          { "value": "FLAT_MOVE_COST", "multiply": -0.05 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_fish_in_water",
+    "name": "Like a Fish in the Water",
+    "description": "So unremarkable that there's no proverb about it.  When in deep water, your stamina regeneration is doubled, and you can swim 25% faster.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "conditions": [ "UNDERWATER" ],
+        "values": [
+          { "value": "STAMINA_REGEN", "multiply": 1 },
+          { "value": "SWIM_MOVE_COST", "multiply": -0.25 },
+        ],
+      },
+    ],
+    "//1": "Unported: The three artifact perks; Reason: artifact resonance doesn't exist",
+    "//2": "Unported: Firstest Aid; Reason: Bandages aren't a problem here",
+    "//3": "Unported: Absit Invidia; Reason: Seems broken, maybe a high tier perk for it.",
+  },
+  {
+    "//": "Note: Requires https://github.com/cataclysmbn/Cataclysm-BN/pull/9406 for the hook",
+    "type": "perk",
+    "id": "duck_perk_eating_window",
+    "name": "Compressed Eating Window",
+    "description": "You're so used to squeezing all your meals into a short time that your body has adapted to it.  You gain 2.5 times as many calories and vitamins from any meals eaten during a 6 hour period since first eating in a 24 hour period, but 0 calories and vitamins for any meals eaten outside that time period.",
+    "category": "Major Perk",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_moonstruck",
+    "name": "Moonstruck",
+    "description": "You've always been greatly affected by the phases of the moon.  During a full moon, you gain a +3 bonus to all stats.  During a waxing moon, you gain a +1 bonus to all stats, and during a new moon, you suffer a -2 penalty to all stats.",
+    "category": "Major Perk",
+    "enchantments": [
+      {
+        "conditions": [ "NIGHT", "DUCK_FULL_MOON" ],
+        "values": [
+          { "value": "STRENGTH", "add": 3 },
+          { "value": "DEXTERITY", "add": 3 },
+          { "value": "INTELLIGENCE", "add": 3 },
+          { "value": "PERCEPTION", "add": 3 },
+        ],
+      },
+      {
+        "conditions": [ "NIGHT", "DUCK_WAXING_MOON" ],
+        "values": [
+          { "value": "STRENGTH", "add": 1 },
+          { "value": "DEXTERITY", "add": 1 },
+          { "value": "INTELLIGENCE", "add": 1 },
+          { "value": "PERCEPTION", "add": 1 },
+        ],
+      },
+      {
+        "conditions": [ "NIGHT", "DUCK_NEW_MOON" ],
+        "values": [
+          { "value": "STRENGTH", "add": -2 },
+          { "value": "DEXTERITY", "add": -2 },
+          { "value": "INTELLIGENCE", "add": -2 },
+          { "value": "PERCEPTION", "add": -2 },
+        ],
+      },
+    ],
+    "//1": "Unported: In a Crimson Mist; Reason: too powerful without debuff, debuff impossible",
+    "//2": "Unported: Soup for the Soul; Reason: feels too limiting",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_nocturnal",
+    "name": "Nocturnal",
+    "description": "Darkness is your ally.  Others have merely adopted the dark, but you were born in it, molded by it.  You gain +2 Perception and +1 Intelligence at night, and have a much easier time sleeping during the day.  However, you also suffer -2 Perception when outdoors during the day and have a harder time sleeping at night.",
+    "category": "Major Perk",
+    "enchantments": [
+      {
+        "conditions": [ "NIGHT" ],
+        "values": [
+          { "value": "PERCEPTION", "add": 2 },
+          { "value": "INTELLIGENCE", "add": 2 },
+          { "value": "SLEEPY", "add": -30 },
+        ],
+      },
+      {
+        "conditions": [ "DAY" ],
+        "values": [ { "value": "SLEEPY", "add": 100 } ],
+      },
+      {
+        "conditions": [ "DAY", "OUTSIDE" ],
+        "values": [
+          { "value": "PERCEPTION", "add": -2 },
+          { "value": "FATIGUE", "multiply": 4 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_second_chance",
+    "name": "Second Chance",
+    "description": "Something is watching over you, though whether for good or ill you cannot tell.  The first time you suffer fatal damage, you will heal slightly, remove all pain, and gain a speed bonus, temperature immunity, and immunity to damage for a very short time.  After that expires, though, you're on your own to resolve whatever problem you're in.\n<info>This perk only works once per season.</info>",
+    "category": "Major Perk",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_gunslinger",
+    "name": "Gunslinger",
+    "description": "I do not aim with my hand.  He who aims with his hand has…uh, you forget what comes next.  When using pistols, you aim 75% faster and reload 45% faster.",
+    "category": "Major Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_WIELDED_PISTOL" ],
+        "values": [
+          { "value": "RANGED_AIM_SPEED", "multiply": 0.75 },
+          { "value": "RANGED_RELOAD_TIME", "multiply": -0.45 },
+        ],
+      },
+    ],
+    "//": "Unported: Ascetic Empowerment; Reason: Feels weird, might be done eventually though",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_boomstick_blast",
+    "name": "Boomstick Blast",
+    "description": "People hit by shotgun blasts always seem to go flying in actions movies, but it doesn't work that way in real life.  At least, it didn't.\n\nWhen you damage a target within 2 squares using a shotgun and do at least 15 damage, your target will suffer knockback.",
+    "category": "Major Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_WIELDED_SHOTGUN" ],
+        "values": [ { "value": "DUCK_RANGED_KNOCKBACK", "add": 2 } ],
+      },
+    ],
+    "//1": "Unported: Stormwrought; Reason: Portal storms dont exist",
+    "//2": "Unported: Closetland; Reason: Requires https://github.com/cataclysmbn/Cataclysm-BN/pull/8363",
+    "//3": "Unported: Ewwww de Zombie; Reason: Pheremones already exist, not considered useful",
+    "//4": "Unported: Soothing the Savage Beast; Reason: Pets are already simple enough to get; Requires activate",
+    "//5": "Unported: Hive queen; Reason: Would require a persistent mutation",
+  },
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "id": "DUCK_RANGED_KNOCKBACK",
+    "type": "enchantment_value",
+    "desc": "Affects knockback range on ranged attacks",
+  },
+]

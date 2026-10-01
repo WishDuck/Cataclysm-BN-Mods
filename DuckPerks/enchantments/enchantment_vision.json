@@ -1,0 +1,10 @@
+[
+  {
+    "type": "enchantment_vision",
+    "id": "DUCK_SIGHT_BEYOND_SIGHT",
+    "desc": "Allows Sight Of Electric Creatures",
+    "show_with_species": [ "NETHER", "HORROR", "ABERRATION" ],
+    "show_with_flag": [ "ELECTRIC", "ELECTRONIC" ],
+    "vision_desc": { "tile_id": "infrared_creature", "description": "You sense an electric critter." }
+  },
+]

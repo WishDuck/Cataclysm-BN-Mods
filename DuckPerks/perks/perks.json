@@ -1,0 +1,10 @@
+[
+  {
+    "type": "perk",
+    "id": "duck_perk_sight_of_flame",
+    "name": "Sight of Flame",
+    "description": "While trapped in the smoldering heat of a migo tower, you figured out you could sense nearby migo... Based only off the fact that they emit even more heat.",
+    "category": "Perk",
+    "enchantments": [ { "special_vision": [ "DUCK_SIGHT_OF_FLAME" ] } ],
+  },
+]
