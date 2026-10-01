@@ -201,3 +201,30 @@ mod.open_perks_menu = function(params)
   mod.perk_menu(params.user)
   return 0
 end
+
+-- Exp gain
+mod.on_monster_killed = function(params)
+  local killer = params.killer
+  local monster = params.mon
+
+  if not killer or not monster then return end
+
+  local player = killer:as_character()
+  if not player then return end
+
+  local monster_hp = monster:get_hp_max()
+  local xp = util.get_char_value_num(player, perk_exp_var, 0)
+  local level = perk_level.get_level(xp)
+  local xp_gain = math.max(1, math.floor(monster_hp / 10))
+  local level_xp_gain = perk_level.exp_to_next_level(xp)
+  if xp_gain >= level_xp_gain then
+    if ( level + 1 ) % 7 == 0 then
+      util.mod_char_value_num(player, major_perks_var, 1)
+      util.mod_char_value_num(player, major_perks_total_var, 1)
+    else
+      util.mod_char_value_num(player, basic_perks_var, 1)
+      util.mod_char_value_num(player, basic_perks_total_var, 1)
+    end
+  end
+  util.mod_char_value_num(player, perk_exp_var, xp_gain)
+end
