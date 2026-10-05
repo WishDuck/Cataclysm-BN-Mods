@@ -41,5 +41,83 @@
     "enchantments": [
       { "values": [ { "value": "ARMOR", "multiply": -0.05 } ] },
     ],
+    "//": "Unported: Hauler; Reason: Not intresting nor useful",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_vacationer",
+    "name": "Vacationer",
+    "description": "Every day in the apocalypse is just like the beach.  You are more comfortable in cold and warm weather.",
+    "category": "Perk",
+    "enchantments": [
+      { "values": [ { "value": "CLIMATE_CONTROL", "add": 250 } ] },
+    ],
+    "//": "Unported: Thick Skull; Reason: Not intresting nor useful",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_bloody_mess",
+    "name": "Bloody Mess",
+    "description": "For whatever reason you seem to always make a real mess of things.  Enemies you kill tend to explode into a mess of viscera.",
+    "category": "Perk",
+    "enchantments": [ { "values": [ { "value": "OVERKILL", "add": 100 } ] } ],
+    "//": "Unported: Thick Skull; Reason: Not intresting nor useful",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_tingly",
+    "name": "Tingly",
+    "description": "Ever since the apocalypse you get a funny feeling during storms and have trouble trusting small appliances.  You usually have a pretty good idea where they are though.",
+    "category": "Perk",
+    "enchantments": [ { "special_vision": [ "DUCK_MINOR_ELECTROSENSE" ] } ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_jumpy",
+    "name": "Jumpy",
+    "description": "You've not been the same since the apocalypse, almost everything makes you jump.  You are just a bit quicker to act though.",
+    "category": "Perk",
+    "enchantments": [
+      {
+        "values": [
+          { "value": "SPEED", "multiply": 0.05 },
+          { "value": "SLEEP_DB_RESIST", "add": -3 },
+          { "value": "SLEEP_PAIN_THRESH", "add": -5 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_hobbyist",
+    "name": "Hobbyist",
+    "description": "No work, no social obligations, lots of time to focus on your hobbies.  You feel like you've been picking up skills faster recently.",
+    "category": "Perk",
+    "enchantments": [
+      { "values": [ { "value": "EFFECTIVE_FOCUS", "add": 10 } ] },
+    ],
+    "//": "Unported: Recycler; Reason: Too complex for no reward. How to do mod compat too",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_safety_net",
+    "name": "Safety Net",
+    "description": "You've always felt like someone was looking out for you upstairs.  Sometimes bullets just dont hit you somehow...",
+    "category": "Perk",
+    "enchantments": [
+      { "values": [ { "value": "FORCEFIELD_BULLET", "add": 10 } ] },
+    ],
+    "//": "Unported: Lucky Dodge; Reason: Why is it dodging?",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_long_shot",
+    "name": "Long Shot",
+    "description": "You always ate your carrots, that good eyesight is paying off.  You can use ranged weapons effectively up to 4 more tiles away.",
+    "category": "Perk",
+    "enchantments": [ { "values": [ { "value": "RANGED_RANGE", "add": 4 } ] } ],
+    "//1": "Unported: Empath; Reason: Huh?",
+    "//2": "Unported: Iron Arm; Reason: Functionality is odd, no easy way to recreate",
+    "//3": "Unported: Skin & Bones; Reason: Lazy",
   },
 ]

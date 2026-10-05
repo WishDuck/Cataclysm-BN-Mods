@@ -50,12 +50,6 @@ local perk_tingly = PerkId.new("duck_perk_tingly")
 -- Helper Functions
 local get_perk_level = function(character) return util.get_char_value_num(character, perk_level_var, 0) end
 
--- Working schema
--- id ( mandatory ): id of perk to give
--- condition_string ( mandatory ): readable condition
--- condition ( mandatory ): lua function taking the character; says if can give perk
--- show_if_condition_false ( optional ): defaults to true, if false remove from selection menu, as it can never be true again
--- major ( optional ): defaults to false, if true requires a playstyle perk point to choose, which are given every 5 levels.
 return {
   -- Minor Perks
   {
@@ -73,13 +67,14 @@ return {
     condition_string = locale.gettext("Requires Built Tough and Perk Level 6"),
     condition = function(character) return get_perk_level(character) >= 6 and character:has_perk(perk_built_tough) end,
   },
-  {
-    id = perk_bellringer,
-    condition_string = locale.gettext("Requires Bashing or Unarmed Skill Level 4"),
-    condition = function(character)
-      return character:get_skill_level(unarmed_skill) >= 4 or character:get_skill_level(bashing_skill) >= 4
-    end,
-  },
+  -- Hiding in initial implementation as it is incomplete
+  -- {
+  --   id = perk_bellringer,
+  --   condition_string = locale.gettext("Requires Bashing or Unarmed Skill Level 4"),
+  --   condition = function(character)
+  --     return character:get_skill_level(unarmed_skill) >= 4 or character:get_skill_level(bashing_skill) >= 4
+  --   end,
+  -- },
   {
     id = perk_vengeful,
     condition_string = locale.gettext("Requires lack of Twice Shy"),
@@ -139,17 +134,18 @@ return {
     condition = function(character) return not character:has_perk(perk_nocturnal) and not character:has_trait(trait_insomnia) end,
     show_if_condition_false = false,
   },
-  {
-    id = perk_early_to_rise,
-    condition_string = locale.gettext("Cannot have Nocturnal"),
-    condition = function(character) return not character:has_perk(perk_nocturnal) end,
-    show_if_condition_false = false,
-  },
-  {
-    id = perk_duck_and_weave,
-    condition_string = locale.gettext("Requires dexterity 12 or dodge 6"),
-    condition = function(character) return character:get_skill_level(dodge_skill) >= 6 or character:get_dex() >= 12 end,
-  },
+  -- Hiding in initial implementation as it is incomplete
+  -- {
+  --   id = perk_early_to_rise,
+  --   condition_string = locale.gettext("Cannot have Nocturnal"),
+  --   condition = function(character) return not character:has_perk(perk_nocturnal) end,
+  --   show_if_condition_false = false,
+  -- },
+  -- {
+  --   id = perk_duck_and_weave,
+  --   condition_string = locale.gettext("Requires dexterity 12 or dodge 6"),
+  --   condition = function(character) return character:get_skill_level(dodge_skill) >= 6 or character:get_dex() >= 12 end,
+  -- },
   {
     id = perk_non_combatant,
     condition_string = locale.gettext("Requires Pacifist"),
@@ -167,13 +163,14 @@ return {
     condition = function(character) return character:get_skill_level(athletics_skill) >= 4 end,
   },
   -- Major perks
-  {
-    id = perk_eating_window,
-    major = true,
-    condition_string = locale.gettext("Cannot have Gourmand"),
-    condition = function(character) return not character:has_trait(trait_gourmand) end,
-    show_if_condition_false = false,
-  },
+  -- Hiding in initial implementation as it is incomplete
+  -- {
+  --   id = perk_eating_window,
+  --   major = true,
+  --   condition_string = locale.gettext("Cannot have Gourmand"),
+  --   condition = function(character) return not character:has_trait(trait_gourmand) end,
+  --   show_if_condition_false = false,
+  -- },
   {
     id = perk_moonstruck,
     major = true,
@@ -189,12 +186,13 @@ return {
     end,
     show_if_condition_false = false,
   },
-  {
-    id = perk_second_chance,
-    major = true,
-    condition_string = locale.gettext("Requires Perk Level 12"),
-    condition = function(character) return get_perk_level(character) >= 12 end,
-  },
+  -- Hiding in initial implementation as it is incomplete
+  -- {
+  --   id = perk_second_chance,
+  --   major = true,
+  --   condition_string = locale.gettext("Requires Perk Level 12"),
+  --   condition = function(character) return get_perk_level(character) >= 12 end,
+  -- },
   {
     id = perk_gunslinger,
     major = true,

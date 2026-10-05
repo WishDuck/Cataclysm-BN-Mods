@@ -1,11 +1,13 @@
 local mod = game.mod_runtime[game.current_mod]
 local storage = game.mod_storage[game.current_mod]
+mod.ench = require("enchantments/enchantment")
 local util = require("utilities")
 local perk_level = require("level")
 local debugmsg = gdebug.debugmsg
 local debug_trait = MutationBranchId.new("DUCK_DEBUG_ALLTRAITS")
 local menu_perk = PerkId.new("duck_perk_menu_opener")
 
+local perk_lists_dirty = true
 local basic_perks = {}
 local major_perks = {}
 
@@ -18,15 +20,26 @@ local major_perks = {}
 -- Debug name is a string
 local function finalize_perk(perk, debug_name)
   if perk.id == nil or not perk.id:is_valid() then
-    debugmsg(string.format("Invalid perk given; Lacks a valid id; Perk %s from %s/%s", tostring(perk.id), game.current_mod, debug_name))
+    debugmsg(
+      string.format(
+        "Invalid perk given; Lacks a valid id; Perk %s from %s/%s",
+        tostring(perk.id),
+        game.current_mod,
+        debug_name
+      )
+    )
     return nil
   end
   if perk.condition_string == nil or type(perk.condition_string) ~= "string" then
-    debugmsg(string.format("Invalid perk given; Lacks a condition string; Perk from %s/%s", game.current_mod, debug_name))
+    debugmsg(
+      string.format("Invalid perk given; Lacks a condition string; Perk from %s/%s", game.current_mod, debug_name)
+    )
     return nil
   end
   if perk.condition == nil or type(perk.condition) ~= "function" then
-    debugmsg(string.format("Invalid perk given; Lacks a condition string; Perk from %s/%s", game.current_mod, debug_name))
+    debugmsg(
+      string.format("Invalid perk given; Lacks a condition string; Perk from %s/%s", game.current_mod, debug_name)
+    )
     return nil
   end
   if perk.show_if_condition_false == nil or type(perk.show_if_condition_false) ~= "boolean" then
@@ -42,6 +55,7 @@ mod.add_perks = function(perk_list, debug_name)
   for _, perk in ipairs(perk_list) do
     local perk = finalize_perk(perk, debug_name)
     if perk ~= nil then
+      perk_lists_dirty = true
       if perk.major then
         table.insert(major_perks, perk)
       else
@@ -53,9 +67,11 @@ end
 
 -- The actual perk additions
 mod.add_perks(require("ported/standing_storm"), "standing_storm")
+mod.add_perks(require("ported/bombastic_slacks"), "bombastic_slacks")
 
 -- Perk Selection UI
 local perk_exp_var = "DUCK_PERK_EXP" -- EXP you have in total
+local perk_level_var = "DUCK_PERK_LEVEL" -- Current Perk Level
 local basic_perks_var = "DUCK_BASIC_PERKS" -- Number of basic perks that can be gained
 local basic_perks_total_var = "DUCK_BASIC_PERKS_TOTAL" -- Number of basic perks in total
 local major_perks_var = "DUCK_MAJOR_PERKS" -- Number of major perks that can be gained
@@ -64,9 +80,14 @@ local major_perks_total_var = "DUCK_MAJOR_PERKS_TOTAL" -- Number of major perks 
 -- Menu for choosing perks
 mod.perk_menu = function(who)
   local keep_open = true
+  if perk_lists_dirty then
+    table.sort(basic_perks, function(a, b) return a.id:obj():get_name() < b.id:obj():get_name() end)
+    table.sort(major_perks, function(a, b) return a.id:obj():get_name() < b.id:obj():get_name() end)
+    perk_lists_dirty = false
+  end
   while keep_open do
     local exp = util.get_char_value_num(who, perk_exp_var, 0)
-    local level = perk_level.get_level(exp)
+    local level = util.get_char_value_num(who, perk_level_var, 0)
     local exp_to_next = perk_level.exp_to_next_level(exp)
     local basic_perks_left = util.get_char_value_num(who, basic_perks_var, 0)
     local basic_perks_total = util.get_char_value_num(who, basic_perks_total_var, 0)
@@ -126,6 +147,8 @@ mod.perk_menu = function(who)
         )
         if res then util.mod_char_value_num(who, major_perks_var, -1) end
       end
+    else
+      break
     end
   end
 end
@@ -153,7 +176,7 @@ mod.select_perks = function(who, perk_list, perks_left, perks_total, title)
           name = util.color_bad(name)
         end
         desc = desc .. perk.id:obj():get_description()
-        
+
         ui:add_w_desc(i, name, desc)
       end
     end
@@ -193,8 +216,13 @@ mod.on_game_load = function()
 
   if not player:has_perk(menu_perk) then
     player:add_perk(menu_perk)
-    util.popup(locale.gettext("To access the perk selection menu, hit activate, then there will be an open perk menu item. Use it!"))
+    util.popup(
+      locale.gettext(
+        "To access the perk selection menu, hit activate, then there will be an open perk menu item. Use it!"
+      )
+    )
   end
+  mod.ench_cond.moon_phase_update()
 end
 
 mod.open_perks_menu = function(params)
@@ -214,17 +242,47 @@ mod.on_monster_killed = function(params)
 
   local monster_hp = monster:get_hp_max()
   local xp = util.get_char_value_num(player, perk_exp_var, 0)
+  local level = util.get_char_value_num(player, perk_level_var, 0)
   local level = perk_level.get_level(xp)
   local xp_gain = math.max(1, math.floor(monster_hp / 10))
-  local level_xp_gain = perk_level.exp_to_next_level(xp)
-  if xp_gain >= level_xp_gain then
-    if ( level + 1 ) % 7 == 0 then
+  local next_level_xp = perk_level.exp_to_level(level)
+  if xp + xp_gain >= next_level_xp then
+    if (level + 1) % 7 == 0 then
       util.mod_char_value_num(player, major_perks_var, 1)
       util.mod_char_value_num(player, major_perks_total_var, 1)
     else
       util.mod_char_value_num(player, basic_perks_var, 1)
       util.mod_char_value_num(player, basic_perks_total_var, 1)
     end
+    util.mod_char_value_num(player, perk_level_var, 1)
   end
   util.mod_char_value_num(player, perk_exp_var, xp_gain)
 end
+
+-- Enchantment conditions
+mod.ench_cond = require("enchantments/enchantment_conditions")
+
+-- Moon Phase Conditions
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_new", MoonPhase.MOON_NEW)
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_waxing_crescent", MoonPhase.MOON_WAXING_CRESCENT)
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_half_moon_waxing", MoonPhase.MOON_HALF_MOON_WAXING)
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_waxing_gibbous", MoonPhase.MOON_WAXING_GIBBOUS)
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_full", MoonPhase.MOON_FULL)
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_waning_gibbous", MoonPhase.MOON_WANING_GIBBOUS)
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_half_moon_waning", MoonPhase.MOON_HALF_MOON_WANING)
+mod.ench_cond.add_moon_phase_condition("duck_moon_phase_waning_crescent", MoonPhase.MOON_WANING_CRESCENT)
+
+local waxing_phases = { MoonPhase.MOON_WAXING_CRESCENT, MoonPhase.MOON_HALF_MOON_WAXING, MoonPhase.MOON_WAXING_GIBBOUS }
+local waning_phases = { MoonPhase.MOON_WANING_CRESCENT, MoonPhase.MOON_HALF_MOON_WANING, MoonPhase.MOON_WANING_GIBBOUS }
+mod.ench_cond.add_multi_moon_phase_condition("duck_moon_phase_waxing", waxing_phases)
+mod.ench_cond.add_multi_moon_phase_condition("duck_moon_phase_waning", waning_phases)
+
+-- Wielded Conditions
+mod.ench_cond.add_weapon_cat_condition("duck_wielded_shotgun", "SHOTGUNS")
+mod.ench_cond.add_weapon_cat_condition("duck_wielded_pistol", "PISTOLS")
+mod.ench_cond.add_weapon_cat_condition("duck_wielded_dueling_swords", "DUELING_SWORDS")
+mod.ench_cond.add_weapon_cat_condition("duck_wielded_none", "NONE")
+
+-- Misc Conditions
+mod.ench_cond.init_sleepy_condition()
+mod.ench_cond.init_near_elec_condition()

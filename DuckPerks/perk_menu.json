@@ -2,7 +2,7 @@
   {
     "type": "item_action",
     "id": "DUCK_PERK_MENU",
-    "name": { "str": "Open the perks menu" }
+    "name": { "str": "Open the perks menu" },
   },
   {
     "type": "perk",

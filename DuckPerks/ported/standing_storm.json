@@ -239,7 +239,7 @@
     "type": "perk",
     "id": "duck_perk_static_stockpile",
     "name": "Static Stockpile",
-    "description": "You can't touch a door without zapping yourself.  Whenever there is a shocker or a robot within 15 squares, or you are outside during a storm, you gain 500J of bionic power per second and your melee attacks will do a small amount of extra electrical damage.",
+    "description": "You can't touch a door without zapping yourself.  Whenever there is a electric creature within 10 squares, or you are outside during a storm, you gain 500J of bionic power per second and your melee attacks will do a small amount of extra electrical damage.",
     "category": "Perk",
     "enchantments": [
       {
@@ -317,7 +317,7 @@
     "category": "Perk",
     "enchantments": [
       {
-        "conditions": [ "DUCK_WIELDED_FENCING" ],
+        "conditions": [ "DUCK_WIELDED_DUELING_SWORDS" ],
         "values": [
           { "value": "BONUS_DODGE", "add": 1 },
           { "value": "FLAT_MOVE_COST", "multiply": -0.05 },
@@ -451,7 +451,7 @@
     "enchantments": [
       {
         "conditions": [ "DUCK_WIELDED_SHOTGUN" ],
-        "values": [ { "value": "DUCK_RANGED_KNOCKBACK", "add": 2 } ],
+        "values": [ { "value": "DUCK_RANGED_KNOCKBACK", "add": 10 } ],
       },
     ],
     "//1": "Unported: Stormwrought; Reason: Portal storms dont exist",

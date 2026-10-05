@@ -2,9 +2,23 @@
   {
     "type": "enchantment_vision",
     "id": "DUCK_SIGHT_BEYOND_SIGHT",
-    "desc": "Allows Sight Of Electric Creatures",
+    "desc": "Allows Sight Of Eldrich Creatures",
     "show_with_species": [ "NETHER", "HORROR", "ABERRATION" ],
     "show_with_flag": [ "ELECTRIC", "ELECTRONIC" ],
-    "vision_desc": { "tile_id": "infrared_creature", "description": "You sense an electric critter." }
+    "vision_desc": {
+      "tile_id": "infrared_creature",
+      "description": "You sense an eldrich critter.",
+    },
+  },
+  {
+    "type": "enchantment_vision",
+    "id": "DUCK_MINOR_ELECTROSENSE",
+    "desc": "Allows Sight Of Close Electric Creatures",
+    "show_with_flag": [ "ELECTRIC", "ELECTRONIC" ],
+    "distance": 5,
+    "vision_desc": {
+      "tile_id": "infrared_creature",
+      "description": "You sense an electric critter.",
+    },
   },
 ]
