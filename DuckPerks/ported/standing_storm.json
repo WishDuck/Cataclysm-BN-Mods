@@ -138,12 +138,14 @@
     "type": "perk",
     "id": "duck_perk_ghost_stealth",
     "name": "Ghost",
-    "description": "You've gotten pretty good at sneaking up on people. So long as there aren't distactions nearby...",
+    "description": "You've gotten pretty good at sneaking up on people. Doesn't help people trust you though.",
     "category": "Perk",
     "enchantments": [
       {
-        "conditions": [ "DUCK_NO_ALLIED_NPCS_IN_BUBBLE" ],
-        "values": [ { "value": "STEALTH", "add": 15 } ],
+        "values": [
+          { "value": "STEALTH", "add": 15 },
+          { "value": "PERSUADE", "add": -10 },
+        ],
       },
     ],
     "//": "Incomplete: Big Eater; Reason: doesn't make sense for cataclysm.",

@@ -68,6 +68,7 @@ end
 -- The actual perk additions
 mod.add_perks(require("ported/standing_storm"), "standing_storm")
 mod.add_perks(require("ported/bombastic_slacks"), "bombastic_slacks")
+mod.add_perks(require("perks/chaosvolt"), "chaosvolt")
 
 -- Perk Selection UI
 local perk_exp_var = "DUCK_PERK_EXP" -- EXP you have in total
@@ -283,6 +284,12 @@ mod.ench_cond.add_weapon_cat_condition("duck_wielded_pistol", "PISTOLS")
 mod.ench_cond.add_weapon_cat_condition("duck_wielded_dueling_swords", "DUELING_SWORDS")
 mod.ench_cond.add_weapon_cat_condition("duck_wielded_none", "NONE")
 
+-- Fancy Conditions
+mod.ench_cond.init_stylish_condition("duck_stylish_5", 5)
+mod.ench_cond.init_stylish_condition("duck_stylish_10", 10)
+mod.ench_cond.init_stylish_condition("duck_stylish_20", 20)
+
 -- Misc Conditions
 mod.ench_cond.init_sleepy_condition()
 mod.ench_cond.init_near_elec_condition()
+mod.ench_cond.init_no_allies_condition()

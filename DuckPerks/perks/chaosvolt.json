@@ -1,0 +1,51 @@
+[
+  {
+    "//1": "These perks are based off chaos' fallout mod perks",
+    "//2": "https://discord.com/channels/830879262763909202/830916451517857894/1560466796060872807",
+    "type": "perk",
+    "id": "duck_perk_stylish_duelist",
+    "name": "Stylish Duelist",
+    "description": "What is life without being stylish. You are faster while in combat but become more fragile for each piece of fancy clothing on you.",
+    "category": "Major Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_STYLISH" ],
+        "values": [
+          { "value": "SPEED", "add": 5 },
+          { "value": "ARMOR", "add": -5 },
+        ],
+      },
+      {
+        "conditions": [ "DUCK_VERY_STYLISH" ],
+        "values": [
+          { "value": "SPEED", "add": 5 },
+          { "value": "ARMOR", "add": -5 },
+        ],
+      },
+      {
+        "conditions": [ "DUCK_SUPREMELY_STYLISH" ],
+        "values": [
+          { "value": "SPEED", "add": 10 },
+          { "value": "ARMOR", "add": -10 },
+        ],
+      },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_wanderer",
+    "name": "Lone Wanderer",
+    "description": "You always felt that your comerades were... stupid in a way, a limitation on your abilities.",
+    "category": "Major Perk",
+    "enchantments": [
+      {
+        "conditions": [ "DUCK_LONE_WOLF" ],
+        "values": [
+          { "value": "CRAFTING_SPEED", "multiply": 0.25 },
+          { "value": "CONSTRUCTION_SPEED", "multiply": 0.25 },
+          { "value": "CARRY_WEIGHT", "multiply": 1 },
+        ],
+      },
+    ],
+  },
+]

@@ -19,7 +19,7 @@ ench.on_shoot = function(params)
   gapi.add_msg("enchantment")
 
   local pos_who = who:bub_pos()
-  local deg = math.atan(target_pos.y - pos_who.y, target_pos.x - pos_who.x )
+  local deg = math.atan(target_pos.y - pos_who.y, target_pos.x - pos_who.x)
   gapi.fling_creature(target, Angle.from_radians(deg), ench_val, true)
 end
 
