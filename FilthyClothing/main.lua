@@ -146,6 +146,12 @@ get_cleaning_charges = function(item) return math.ceil(item:volume(true):to_mill
 get_cleaning_requirements =
   function(item) return requirements.get(cleaning_requirement_id) * get_cleaning_charges(item) end
 
+clean_item_params = function(params)
+  if mod.get_cleanable_clothes( params ) then
+    clean_item(params.item)
+  end
+end
+
 clean_item = function(item)
   item:set_flag(flag_CLEAN)
   item:unset_flag(flag_FILTHY)
@@ -193,4 +199,31 @@ mod.wash = function(params)
   end
   if cleaning_time ~= 0 then user:assign_activity(clean_activity, cleaning_time, -1, -1, "") end
   return 0
+end
+
+mod.bulk_wash = function(params)
+  local user = params.user
+  local cleaning_requirements = requirements.get(cleaning_requirement_id) * 100
+
+  if present_error(
+      locale.gettext("Are you sure you want to clean all nearby clothes?"),
+      cleaning_requirements:list_all()
+    ) == 1 then
+    return
+  end
+
+  local crafting_inv = user:crafting_inventory()
+  if not cleaning_requirements:can_make_with_inventory(crafting_inv) then
+    present_error(
+      locale.gettext("Insufficient cleaning supplies to clean this item"),
+      cleaning_requirements:list_missing()
+    )
+  else
+    if user:consume_requirement(cleaning_requirements, {}) then
+      local cleaning_params = {}
+      cleaning_params.func = clean_item_params
+      gapi.map_inv_edit(cleaning_params)
+    end
+  end
+  return
 end

@@ -11,3 +11,5 @@ game.add_hook("on_character_item_takeoff", function(...) mod.reset_morale_val_ex
 gapi.add_on_every_x_hook(TimeDuration.from_minutes(30), function(...) return mod.give_morale_and_sweat(...) end)
 
 game.iuse_functions["LUA_WASH"] = function(...) return mod.wash(...) end
+
+game.examine_functions["LUA_BULK_WASH"] = function(...) return mod.bulk_wash(...) end
