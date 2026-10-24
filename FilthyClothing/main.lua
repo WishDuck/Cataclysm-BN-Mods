@@ -137,7 +137,6 @@ present_error = function(error, desc)
   ui_error:add_w_desc(0, locale.gettext("Continue"), desc)
   ui_error:add_w_desc(1, locale.gettext("Quit"), desc)
   local query = ui_error:query()
-  gapi.add_msg(query)
   return query
 end
 

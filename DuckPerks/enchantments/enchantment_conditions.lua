@@ -89,7 +89,6 @@ end
 ench_cond.init_no_allies_condition = function()
   local cond = {}
   cond.character = function(params) 
-    gapi.add_msg( current_ally_count )
     return current_ally_count == 0 end
   game.add_lua_condition("duck_no_allies", cond)
 end

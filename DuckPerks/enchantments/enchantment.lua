@@ -6,17 +6,14 @@ ench.on_shoot = function(params)
   local who = params.shooter
   who = who:as_character()
   if who == nil then return end
-  gapi.add_msg("char")
 
   -- Setup target monster, return if none at target
   local target_pos = params.target_pos
   local target = gapi.get_creature_at(target_pos)
   if target == nil then return end
-  gapi.add_msg("target")
 
   local ench_val = who:bonus_from_enchantments(0, ench_val_ranged_knockback)
   if ench_val <= 0 then return end
-  gapi.add_msg("enchantment")
 
   local pos_who = who:bub_pos()
   local deg = math.atan(target_pos.y - pos_who.y, target_pos.x - pos_who.x)
