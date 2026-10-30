@@ -16,6 +16,8 @@ local unarmed_skill = SkillId.new("unarmed")
 local mechanics_skill = SkillId.new("mechanics")
 local dodge_skill = SkillId.new("dodge")
 local shotgun_skill = SkillId.new("shotgun")
+local pistol_skill = SkillId.new("pistol")
+local melee_skill = SkillId.new("melee")
 
 -- Local Perk Id List
 local perk_sight_beyond_sight = PerkId.new("duck_perk_sight_beyond_sight")
