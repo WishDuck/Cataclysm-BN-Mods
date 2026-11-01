@@ -88,8 +88,7 @@ end
 
 ench_cond.init_no_allies_condition = function()
   local cond = {}
-  cond.character = function(params) 
-    return current_ally_count == 0 end
+  cond.character = function(params) return current_ally_count == 0 end
   game.add_lua_condition("duck_no_allies", cond)
 end
 

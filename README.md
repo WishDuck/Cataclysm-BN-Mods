@@ -26,4 +26,3 @@ All mods require the latest nightly, or versions prefixed with the number of the
 are compatible with that stable release ( I.E. 12.0.1 mod version is compatible with stable 13.0.0 )
 
 Fixes will not be backported to stable compatible versions.
-

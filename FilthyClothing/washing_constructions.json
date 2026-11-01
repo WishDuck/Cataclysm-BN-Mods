@@ -6,20 +6,22 @@
     "category": "WORKSHOP",
     "required_skills": [ [ "fabrication", 4 ], [ "electronics", 2 ] ],
     "time": "2 h",
-    "qualities": [ [ { "id": "WELD", "level": 2 }, { "id": "GLARE", "level": 2 } ] ],
+    "qualities": [
+      [ { "id": "WELD", "level": 2 }, { "id": "GLARE", "level": 2 } ],
+    ],
     "using": [ [ "soldering_standard", 20 ] ],
     "components": [
       [ [ "sheet_metal", 12 ] ],
       [ [ "cable", 20 ] ],
       [ [ "hose", 4 ] ],
       [ [ "cu_pipe", 4 ] ],
-      [ [ "motor_small", 1 ] ]
+      [ [ "motor_small", 1 ] ],
     ],
-    "post_furniture": "f_washer"
+    "post_furniture": "f_washer",
   },
   {
     "type": "construction_group",
     "id": "duck_constr_washing_machine",
-    "name": "Place Washing Machine"
+    "name": "Place Washing Machine",
   },
 ]

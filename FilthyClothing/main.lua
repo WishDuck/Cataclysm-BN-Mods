@@ -146,9 +146,7 @@ get_cleaning_requirements =
   function(item) return requirements.get(cleaning_requirement_id) * get_cleaning_charges(item) end
 
 clean_item_params = function(params)
-  if mod.get_cleanable_clothes( params ) then
-    clean_item(params.item)
-  end
+  if mod.get_cleanable_clothes(params) then clean_item(params.item) end
 end
 
 clean_item = function(item)
@@ -204,10 +202,12 @@ mod.bulk_wash = function(params)
   local user = params.user
   local cleaning_requirements = requirements.get(cleaning_requirement_id) * 100
 
-  if present_error(
+  if
+    present_error(
       locale.gettext("Are you sure you want to clean all nearby clothes?"),
       cleaning_requirements:list_all()
-    ) == 1 then
+    ) == 1
+  then
     return
   end
 

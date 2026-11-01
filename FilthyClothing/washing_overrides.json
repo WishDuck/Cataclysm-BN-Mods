@@ -24,6 +24,6 @@
     "type": "furniture",
     "id": "f_washer",
     "copy-from": "f_washer",
-    "examine_action": "lua:LUA_BULK_WASH"
-  }
+    "examine_action": "lua:LUA_BULK_WASH",
+  },
 ]
