@@ -28,5 +28,6 @@ game.add_hook("on_character_unwield", function(params)
 end)
 
 game.add_hook("on_character_try_consume", function(...) return mod.on_character_try_consume(...) end)
+game.add_hook("on_character_wake_up", function(...) return mod.on_character_wake_up(...) end)
 -- game.add_hook("on_dialogue_end", function(...) return mod.on_dialogue_end(...) end)
 game.iuse_functions["DUCK_PERK_MENU"] = function(...) return mod.open_perks_menu(...) end

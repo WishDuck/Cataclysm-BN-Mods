@@ -136,13 +136,13 @@ return {
     condition = function(character) return not character:has_perk(perk_nocturnal) and not character:has_trait(trait_insomnia) end,
     show_if_condition_false = false,
   },
+  {
+    id = perk_early_to_rise,
+    condition_string = locale.gettext("Cannot have Nocturnal"),
+    condition = function(character) return not character:has_perk(perk_nocturnal) end,
+    show_if_condition_false = false,
+  },
   -- Hiding in initial implementation as it is incomplete
-  -- {
-  --   id = perk_early_to_rise,
-  --   condition_string = locale.gettext("Cannot have Nocturnal"),
-  --   condition = function(character) return not character:has_perk(perk_nocturnal) end,
-  --   show_if_condition_false = false,
-  -- },
   -- {
   --   id = perk_duck_and_weave,
   --   condition_string = locale.gettext("Requires dexterity 12 or dodge 6"),

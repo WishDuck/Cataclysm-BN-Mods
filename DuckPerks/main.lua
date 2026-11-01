@@ -1,6 +1,5 @@
 local mod = game.mod_runtime[game.current_mod]
 local storage = game.mod_storage[game.current_mod]
-require("effects/consume")
 mod.ench = require("enchantments/enchantment")
 local util = require("utilities")
 local perk_level = require("level")
@@ -294,3 +293,7 @@ mod.ench_cond.init_stylish_condition("duck_stylish_20", 20)
 mod.ench_cond.init_sleepy_condition()
 mod.ench_cond.init_near_elec_condition()
 mod.ench_cond.init_no_allies_condition()
+
+-- Loading other files
+require("effects/consume")
+require("effects/on_wake")

@@ -6,4 +6,4 @@ All credit for the `standing_storm.json` and `standing_storm.lua` files goes to 
 
 ## Bombastic Slacks
 
-All credit for the `bombastic_slacks.json` file goes to [Bombastic Slacks](https://github.com/bombasticSlacks)
+All credit for the `bombastic_slacks.json` and `bombastic_slacks.lua` files goes to [Bombastic Slacks](https://github.com/bombasticSlacks)

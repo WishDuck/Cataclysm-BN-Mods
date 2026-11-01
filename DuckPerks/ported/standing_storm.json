@@ -267,9 +267,8 @@
     "type": "perk",
     "id": "duck_perk_early_to_rise",
     "name": "Early to Rise",
-    "description": "That health, wealth, and wisdom is coming any day now.  When you wake up between 4 and 7 a.m., you gain a mood boost for that morning.",
+    "description": "That health, wealth, and wisdom is coming any day now.  When you wake up between 4 and 7 a.m., you gain a mood boost for that day.",
     "category": "Perk",
-    "//": "Gives morale boost upon 5 minute checks showing going from sleep -> awake at 4-7 AM",
   },
   {
     "type": "effect_type",
