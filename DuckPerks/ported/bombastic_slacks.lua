@@ -95,6 +95,7 @@ return {
       for i, id in ipairs(all_crafting_skills) do
         total_level = total_level + character:get_skill_level(id)
       end
+      return total_level >= 12
     end,
   },
   {
