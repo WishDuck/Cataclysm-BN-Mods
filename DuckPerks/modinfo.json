@@ -8,5 +8,6 @@
     "category": "misc_additions",
     "dependencies": [ "bn" ],
     "lua_api_version": 2,
+    "options_path": "options",
   },
 ]

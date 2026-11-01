@@ -1,0 +1,22 @@
+[
+  {
+    "type": "OPTION_GROUP",
+    "id": "duck_duckperks",
+    "page": "world_default",
+    "title": "Duck Perks Options",
+    "desc": "Duck Perks Mod Options",
+  },
+  {
+    "type": "OPTION",
+    "name": "DUCK_DUCKPERKS_HP_PER_EXP",
+    "stype": "int",
+    "scope": "world",
+    "page": "world_default",
+    "group": "duck_duckperks",
+    "menu_text": "Monster Health Per Perk EXP",
+    "tooltip": "EXP per monster health point, rounded downwards so set it too high and few things will give exp",
+    "min": 1,
+    "max": 1000,
+    "default": 10,
+  },
+]
