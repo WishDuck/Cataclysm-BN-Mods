@@ -27,5 +27,6 @@ game.add_hook("on_character_unwield", function(params)
   if params.who:is_avatar() then mod.ench_cond.weapon_category_clear() end
 end)
 
+game.add_hook("on_character_try_consume", function(...) return mod.on_character_try_consume(...) end)
 -- game.add_hook("on_dialogue_end", function(...) return mod.on_dialogue_end(...) end)
 game.iuse_functions["DUCK_PERK_MENU"] = function(...) return mod.open_perks_menu(...) end

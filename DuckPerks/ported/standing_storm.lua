@@ -165,14 +165,13 @@ return {
     condition = function(character) return character:get_skill_level(athletics_skill) >= 4 end,
   },
   -- Major perks
-  -- Hiding in initial implementation as it is incomplete
-  -- {
-  --   id = perk_eating_window,
-  --   major = true,
-  --   condition_string = locale.gettext("Cannot have Gourmand"),
-  --   condition = function(character) return not character:has_trait(trait_gourmand) end,
-  --   show_if_condition_false = false,
-  -- },
+  {
+    id = perk_eating_window,
+    major = true,
+    condition_string = locale.gettext("Cannot have Gourmand"),
+    condition = function(character) return not character:has_trait(trait_gourmand) end,
+    show_if_condition_false = false,
+  },
   {
     id = perk_moonstruck,
     major = true,

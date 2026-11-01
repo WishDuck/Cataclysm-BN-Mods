@@ -347,7 +347,6 @@
     "//3": "Unported: Absit Invidia; Reason: Seems broken, maybe a high tier perk for it.",
   },
   {
-    "//": "Note: Requires https://github.com/cataclysmbn/Cataclysm-BN/pull/9406 for the hook",
     "type": "perk",
     "id": "duck_perk_eating_window",
     "name": "Compressed Eating Window",
