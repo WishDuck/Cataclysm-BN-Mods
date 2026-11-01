@@ -100,15 +100,24 @@ mod.give_morale_and_sweat = function(info)
 
   local dirty_mod = 1
   dirty_mod = dirty_mod + avatar:bonus_from_enchantments(dirty_mod, ench_val_CLOTHING_DIRTY)
+  local do_dirty = gapi.get_option_bool("DUCK_FILTHYCLOTHING_REDIRTY_CLOTHING")
+  local min_rate = 24
+  local max_rate = 1024
+  if do_dirty then
+    min_rate = gapi.get_option_int("DUCK_FILTHYCLOTHING_DIRTY_RATE_MIN")
+    max_rate = gapi.get_option_int("DUCK_FILTHYCLOTHING_DIRTY_RATE_MAX")
+  end
   for index, item in pairs(worn_items) do
-    local dirtiness = item:get_var_num(dirty_var, 0)
-    if gapi.rng(24, 1024) <= dirtiness then
-      make_dirty(item)
-      dirtiness = 0
-    else
-      dirtiness = dirtiness + dirty_mod
+    if do_dirty then
+      local dirtiness = item:get_var_num(dirty_var, 0)
+      if gapi.rng(min_rate, max_rate) <= dirtiness then
+        make_dirty(item)
+        dirtiness = 0
+      else
+        dirtiness = dirtiness + dirty_mod
+      end
+      item:set_var_num(dirty_var, dirtiness)
     end
-    item:set_var_num(dirty_var, dirtiness)
     morale = morale + clean_morale_mod(avatar, item)
   end
 
