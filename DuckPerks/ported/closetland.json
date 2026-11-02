@@ -1,0 +1,102 @@
+[
+  {
+    "//": "This better not spawn",
+    "type": "overmap_special",
+    "id": "duck_closetland",
+    "overmaps": [ { "point": [ 0, 0, 0 ], "overmap": "duck_closetland" } ],
+    "locations": [ "forest" ],
+    "city_distance": [ 100, 0 ],
+    "occurrences": [ 8, 0 ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": [ "duck_closetland" ],
+    "method": "json",
+    "object": {
+      "fill_ter": "t_open_air",
+      "rows": [
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "         -----          ",
+        "         -...-          ",
+        "         -.O.-          ",
+        "         -...-          ",
+        "         -----          ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "terrain": { "O": "t_duck_closetland_floor_olight", ".": "t_duck_closetland_floor", "-": "t_duck_closetland_wall_wood" }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "duck_closetland",
+    "name": "Closetland",
+    "sym": "C",
+    "color": "light_red",
+    "flags": [ "NO_ROTATE" ]
+  },
+  {
+    "type": "terrain",
+    "id": "t_duck_closetland_wood_roof",
+    "copy-from": "t_flat_roof"
+  },
+  {
+    "type": "terrain",
+    "id": "t_duck_closetland_floor_olight",
+    "copy-from": "t_floor_olight",
+    "bash": {
+      "str_min": 10000,
+      "str_max": 10000,
+      "sound": "glass breaking!",
+      "sound_fail": "whack!",
+      "sound_vol": 16,
+      "sound_fail_vol": 10,
+      "ter_set": "t_duck_closetland_floor",
+      "items": [ { "item": "glass_shard", "count": [ 8, 16 ] } ]
+    },
+  },
+  {
+    "type": "terrain",
+    "id": "t_duck_closetland_floor",
+    "copy-from": "t_floor",
+    "roof": "t_duck_closetland_wood_roof",
+    "bash": {
+      "str_min": 10000,
+      "str_max": 10000,
+      "sound": "smash!",
+      "sound_fail": "whump!",
+      "ter_set": "t_duck_closetland_wall_wood",
+      "items": "wall_bash_results"
+    }
+  },
+  {
+    "type": "terrain",
+    "id": "t_duck_closetland_wall_wood",
+    "copy-from": "t_wall_wood",
+    "roof": "t_duck_closetland_wood_roof",
+    "bash": {
+      "str_min": 10000,
+      "str_max": 10000,
+      "sound": "smash!",
+      "sound_fail": "whump!",
+      "ter_set": "t_duck_closetland_floor",
+      "items": "wall_bash_results"
+    }
+  },
+]

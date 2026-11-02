@@ -298,3 +298,4 @@ mod.ench_cond.init_no_allies_condition()
 -- Loading other files
 require("effects/consume")
 require("effects/on_wake")
+require("effects/closetland")

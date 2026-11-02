@@ -1,0 +1,14 @@
+[
+  {
+    "type": "world_type",
+    "id": "duck_closetland",
+    "name": { "str": "Closetland" },
+    "description": { "str": "A sleep inducing private pocket of space." },
+    "region_settings": "default",
+    "infinite_bounds": false,
+    "boundary_terrain": "t_pd_border",
+    "save_prefix": "duck_closetland",
+    "allow_npc_travel": false,
+    "allow_vehicle_travel": false
+  },
+]

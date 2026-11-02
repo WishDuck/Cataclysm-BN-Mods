@@ -16,6 +16,7 @@ local unarmed_skill = SkillId.new("unarmed")
 local mechanics_skill = SkillId.new("mechanics")
 local dodge_skill = SkillId.new("dodge")
 local shotgun_skill = SkillId.new("shotgun")
+local gun_skill = SkillId.new("gun")
 local pistol_skill = SkillId.new("pistol")
 local melee_skill = SkillId.new("melee")
 
@@ -45,6 +46,7 @@ local perk_nocturnal = PerkId.new("duck_perk_nocturnal")
 local perk_second_chance = PerkId.new("duck_perk_second_chance")
 local perk_gunslinger = PerkId.new("duck_perk_gunslinger")
 local perk_boomstick_blast = PerkId.new("duck_perk_boomstick_blast")
+local perk_closetland = PerkId.new("duck_perk_closetland")
 -- External Perk Id List
 local perk_built_tough = PerkId.new("duck_perk_built_tough")
 local perk_tingly = PerkId.new("duck_perk_tingly")
@@ -209,5 +211,11 @@ return {
     major = true,
     condition_string = locale.gettext("Requires Shotgun Level 6"),
     condition = function(character) return character:get_skill_level(shotgun_skill) >= 6 end,
+  },
+  {
+    id = perk_closetland,
+    major = true,
+    condition_string = locale.gettext("No Condition"),
+    condition = function(character) return true end,
   },
 }

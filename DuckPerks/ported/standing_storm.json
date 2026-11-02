@@ -455,9 +455,47 @@
       },
     ],
     "//1": "Unported: Stormwrought; Reason: Portal storms dont exist",
-    "//2": "Unported: Closetland; Reason: Requires https://github.com/cataclysmbn/Cataclysm-BN/pull/8363",
-    "//3": "Unported: Ewwww de Zombie; Reason: Pheremones already exist, not considered useful",
-    "//4": "Unported: Soothing the Savage Beast; Reason: Pets are already simple enough to get; Requires activate",
-    "//5": "Unported: Hive queen; Reason: Would require a persistent mutation",
   },
+  {
+    "type": "item_action",
+    "id": "DUCK_CLOSETLAND",
+    "name": "Access Closetland"
+  },
+  {
+    "//": "Closetland",
+    "type": "TOOL",
+    "id": "duck_perk_fake_item_closetland",
+    "copy-from": "fake_item",
+    "name": { "str_sp": "closetland" },
+    "flags": [ "TRADER_AVOID", "ENCHANTMENT_TOOLS" ],
+    "use_action": [ "DUCK_CLOSETLAND" ]
+  },
+  {
+    "type": "effect_type",
+    "id": "duck_perk_effect_closetland_inside",
+    "name": [ "Soporific Atmosphere" ],
+    "desc": [ "Being here is making you very sleepy. So sleepy that you cant really be productive here." ],
+    "permanent": true,
+    "//": "DDA version has you dead if you sleep here, lets just make it pointless to stay here instead.",
+    "base_enchantments": [
+      { "values": [
+        { "value": "FATIGUE", "multiply": 25 },
+        { "value": "CRAFTING_SPEED", "multiply": -100 },
+        { "value": "CONSTRUCTION_SPEED", "multiply": -100 }
+      ] },
+    ],
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_closetland",
+    "name": "Closetland",
+    "description": "When you were little you remember thinking that your closet was a portal to a secret realm and if you just knew the way to open the path, you could find your way through to another world.  Well, you've found the way.\n\nWhen in a closet (walls or doors on all sides), activate this perk ( see usable things ) to transport you to a secret realm.  Reactivate this perk to transport you back to your entrance point.",
+    "category": "Major Perk",
+    "enchantments": [
+      { "fake_items": [ "duck_perk_fake_item_closetland" ] },
+    ],
+    "//1": "Unported: Ewwww de Zombie; Reason: Pheremones already exist, not considered useful",
+    "//2": "Unported: Soothing the Savage Beast; Reason: Pets are already simple enough to get; Requires activate",
+    "//3": "Unported: Hive queen; Reason: Would require a persistent mutation",
+  }
 ]

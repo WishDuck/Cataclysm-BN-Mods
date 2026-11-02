@@ -1,5 +1,9 @@
 local mod = game.mod_runtime[game.current_mod]
 
+game.add_hook("on_make_mapgen_factory_list", function(params)
+  params.results:insert(#params.results + 1, "duck_closetland")
+end)
+
 game.add_hook("on_shoot", function(...) return mod.ench.on_shoot(...) end)
 game.add_hook("on_mon_death", function(...) return mod.on_monster_killed(...) end)
 game.add_hook("on_game_started", function(...) return mod.on_game_load(...) end)
@@ -31,3 +35,4 @@ game.add_hook("on_character_try_consume", function(...) return mod.on_character_
 game.add_hook("on_character_wake_up", function(...) return mod.on_character_wake_up(...) end)
 -- game.add_hook("on_dialogue_end", function(...) return mod.on_dialogue_end(...) end)
 game.iuse_functions["DUCK_PERK_MENU"] = function(...) return mod.open_perks_menu(...) end
+game.iuse_functions["DUCK_CLOSETLAND"] = function(...) return mod.closetland(...) end
