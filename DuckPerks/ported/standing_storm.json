@@ -59,9 +59,9 @@
     "description": "Causes ",
     "valid_targets": [ "self" ],
     "effect": "target_attack",
-    "effect_str": "duck_perk_effect_vengance",
-    "min_duration": 2,
-    "max_duration": 2,
+    "effect_str": "duck_perk_effect_vengeful",
+    "min_duration": 200,
+    "max_duration": 200,
   },
   {
     "type": "effect_type",
@@ -86,7 +86,7 @@
     "enchantments": [
       {
         "hit_me_effect": [
-          { "id": "duck_perk_gain_vengance", "hit_self": true },
+          { "id": "duck_perk_gain_effect_vengeful", "hit_self": true },
         ],
       },
     ],
@@ -100,8 +100,8 @@
     "valid_targets": [ "self" ],
     "effect": "target_attack",
     "effect_str": "duck_perk_effect_twice_shy",
-    "min_duration": 5,
-    "max_duration": 5,
+    "min_duration": 500,
+    "max_duration": 500,
   },
   {
     "type": "effect_type",
@@ -179,8 +179,8 @@
     "valid_targets": [ "self" ],
     "effect": "target_attack",
     "effect_str": "duck_perk_effect_no_uncanny_dodge",
-    "min_duration": 30,
-    "max_duration": 30,
+    "min_duration": 3000,
+    "max_duration": 3000,
   },
   {
     "type": "effect_type",
@@ -201,7 +201,7 @@
     "category": "Perk",
     "enchantments": [
       {
-        "hit_me_effect": [ { "id": "duck_perk_spell_no_uncanny_dodge" } ],
+        "hit_me_effect": [ { "id": "duck_perk_no_uncanny_dodge" } ],
         "values": [ { "value": "UNCANNY_DODGE", "add": 0.2 } ],
       },
     ],
