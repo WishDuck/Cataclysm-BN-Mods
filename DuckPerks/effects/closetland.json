@@ -9,6 +9,6 @@
     "boundary_terrain": "t_pd_border",
     "save_prefix": "duck_closetland",
     "allow_npc_travel": false,
-    "allow_vehicle_travel": false
+    "allow_vehicle_travel": false,
   },
 ]

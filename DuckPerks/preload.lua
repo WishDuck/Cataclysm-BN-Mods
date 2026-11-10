@@ -1,8 +1,9 @@
 local mod = game.mod_runtime[game.current_mod]
 
-game.add_hook("on_make_mapgen_factory_list", function(params)
-  params.results:insert(#params.results + 1, "duck_closetland")
-end)
+game.add_hook(
+  "on_make_mapgen_factory_list",
+  function(params) params.results:insert(#params.results + 1, "duck_closetland") end
+)
 
 game.add_hook("on_shoot", function(...) return mod.ench.on_shoot(...) end)
 game.add_hook("on_mon_death", function(...) return mod.on_monster_killed(...) end)
