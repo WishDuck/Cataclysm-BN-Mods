@@ -89,7 +89,7 @@ mod.perk_menu = function(who)
   while keep_open do
     local exp = util.get_char_value_num(who, perk_exp_var, 0)
     local level = util.get_char_value_num(who, perk_level_var, 0)
-    local exp_to_next = perk_level.exp_to_next_level(exp)
+    local exp_to_next = perk_level.exp_to_next_level(exp, level)
     local basic_perks_left = util.get_char_value_num(who, basic_perks_var, 0)
     local basic_perks_total = util.get_char_value_num(who, basic_perks_total_var, 0)
     local major_perks_left = util.get_char_value_num(who, major_perks_var, 0)
@@ -244,11 +244,10 @@ mod.on_monster_killed = function(params)
   local monster_hp = monster:get_hp_max()
   local xp = util.get_char_value_num(player, perk_exp_var, 0)
   local level = util.get_char_value_num(player, perk_level_var, 0)
-  local level = perk_level.get_level(xp)
   local hp_per_level = gapi.get_option_int("DUCK_DUCKPERKS_HP_PER_EXP")
   local xp_gain = math.max(1, math.floor(monster_hp / hp_per_level))
-  local next_level_xp = perk_level.exp_to_level(level)
-  if xp + xp_gain >= next_level_xp then
+  local next_level_xp = perk_level.exp_to_next_level(xp, level)
+  if xp_gain >= next_level_xp then
     if (level + 1) % 7 == 0 then
       util.mod_char_value_num(player, major_perks_var, 1)
       util.mod_char_value_num(player, major_perks_total_var, 1)
