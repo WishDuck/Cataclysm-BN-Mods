@@ -11,9 +11,9 @@
       {
         "values": [
           { "value": "SPEED", "add": { "val": "duck_stylish", "per": 1 } },
-          { "value": "ARMOR", "add": { "val": "duck_stylish", "per": -1 } }
-        ]
-      }
+          { "value": "ARMOR", "add": { "val": "duck_stylish", "per": -1 } },
+        ],
+      },
     ],
   },
   {

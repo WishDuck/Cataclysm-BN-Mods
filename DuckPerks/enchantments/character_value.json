@@ -3,13 +3,13 @@
     "type": "character_value",
     "id": "duck_stylish",
     "var_value": "DUCK_PERK_STYLISH",
-    "desc": "how stylish you are"
+    "desc": "how stylish you are",
   },
   {
     "type": "character_value",
     "id": "duck_ae_hunger",
     "hardcode_value": "HUNGER",
-    "desc": "how hungry you are"
+    "desc": "how hungry you are",
   },
   {
     "type": "character_value",
@@ -17,7 +17,7 @@
     "hardcode_value": "THIRST",
     "desc": "how thirsty you are",
     "min_value": 0,
-    "max_value": 500
+    "max_value": 500,
   },
   {
     "type": "character_value",
@@ -25,6 +25,6 @@
     "hardcode_value": "FATIGUE",
     "desc": "how sleepy you are",
     "min_value": 0,
-    "max_value": 400
+    "max_value": 400,
   },
 ]

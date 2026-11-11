@@ -454,21 +454,57 @@
     "enchantments": [
       {
         "values": [
-          { "value": "STRENGTH", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
-          { "value": "STRENGTH", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
-          { "value": "STRENGTH", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
-          { "value": "DEXTERITY", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
-          { "value": "DEXTERITY", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
-          { "value": "DEXTERITY", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
-          { "value": "INTELLIGENCE", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
-          { "value": "INTELLIGENCE", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
-          { "value": "INTELLIGENCE", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
-          { "value": "PERCEPTION", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
-          { "value": "PERCEPTION", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
-          { "value": "PERCEPTION", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
-        ]
-      }
-    ]
+          {
+            "value": "STRENGTH",
+            "add": { "val": "duck_ae_hunger", "per": 0.04 },
+          },
+          {
+            "value": "STRENGTH",
+            "add": { "val": "duck_ae_thirst", "per": 0.008 },
+          },
+          {
+            "value": "STRENGTH",
+            "add": { "val": "duck_ae_fatigue", "per": 0.01 },
+          },
+          {
+            "value": "DEXTERITY",
+            "add": { "val": "duck_ae_hunger", "per": 0.04 },
+          },
+          {
+            "value": "DEXTERITY",
+            "add": { "val": "duck_ae_thirst", "per": 0.008 },
+          },
+          {
+            "value": "DEXTERITY",
+            "add": { "val": "duck_ae_fatigue", "per": 0.01 },
+          },
+          {
+            "value": "INTELLIGENCE",
+            "add": { "val": "duck_ae_hunger", "per": 0.04 },
+          },
+          {
+            "value": "INTELLIGENCE",
+            "add": { "val": "duck_ae_thirst", "per": 0.008 },
+          },
+          {
+            "value": "INTELLIGENCE",
+            "add": { "val": "duck_ae_fatigue", "per": 0.01 },
+          },
+          {
+            "value": "PERCEPTION",
+            "add": { "val": "duck_ae_hunger", "per": 0.04 },
+          },
+          {
+            "value": "PERCEPTION",
+            "add": { "val": "duck_ae_thirst", "per": 0.008 },
+          },
+          {
+            "value": "PERCEPTION",
+            "add": { "val": "duck_ae_fatigue", "per": 0.01 },
+          },
+        ],
+      },
+    ],
   },
   {
     "type": "perk",

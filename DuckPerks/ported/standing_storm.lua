@@ -212,10 +212,7 @@ return {
     id = perk_ascetic_empowerment,
     major = true,
     condition_string = locale.gettext("Requires Light Eater and Not Gourmand"),
-    condition = function(character) return
-      not character:has_trait(trait_gourmand) and
-      character:has_trait(trait_lighteater)
-    end,
+    condition = function(character) return not character:has_trait(trait_gourmand) and character:has_trait(trait_lighteater) end,
   },
   {
     id = perk_boomstick_blast,

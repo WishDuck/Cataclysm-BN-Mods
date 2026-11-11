@@ -32,9 +32,7 @@ char_val.stylish_update_exclude = function(params)
   local item = params.item
   char_val.stylish_update(params)
 
-  if avatar:is_worn(item) then
-    util.mod_char_value_num(avatar, stylish_var, -stylish_mod(item))
-  end
+  if avatar:is_worn(item) then util.mod_char_value_num(avatar, stylish_var, -stylish_mod(item)) end
 end
 
 return char_val

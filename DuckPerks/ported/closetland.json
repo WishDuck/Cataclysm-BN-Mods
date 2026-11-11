@@ -7,7 +7,7 @@
     "locations": [ "forest" ],
     "city_distance": [ 100, 0 ],
     "occurrences": [ 8, 1 ],
-    "flags": [ "UNIQUE" ]
+    "flags": [ "UNIQUE" ],
   },
   {
     "type": "mapgen",
