@@ -6,7 +6,8 @@
     "overmaps": [ { "point": [ 0, 0, 0 ], "overmap": "duck_closetland" } ],
     "locations": [ "forest" ],
     "city_distance": [ 100, 0 ],
-    "occurrences": [ 8, 0 ],
+    "occurrences": [ 8, 1 ],
+    "flags": [ "UNIQUE" ]
   },
   {
     "type": "mapgen",

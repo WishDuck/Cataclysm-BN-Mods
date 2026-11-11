@@ -440,7 +440,35 @@
         ],
       },
     ],
-    "//": "Unported: Ascetic Empowerment; Reason: Feels weird, might be done eventually though",
+  },
+  {
+    "type": "perk",
+    "id": "duck_perk_ascetic_empowerment",
+    "name": "Ascetic Empowerment",
+    "description": "People talk about getting a high from fasting and for you that's true on a more visceral level.  You gain bonuses to all stats that scale with how hungry, thirsty, and tired you are.",
+    "category": "Major Perk",
+    "//1": "Hunger: 0.04 -> 25% == 1 stat",
+    "//2": "Thirst: 0.008 -> 125 == 1 stat, so about parched for max effect",
+    "//3": "Fatigue: 0.01 -> 100 == 1 stat, so about dead tired for max effect",
+    "//4": "Total max effect is 12 stats if you constantly balance that blade",
+    "enchantments": [
+      {
+        "values": [
+          { "value": "STRENGTH", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
+          { "value": "STRENGTH", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
+          { "value": "STRENGTH", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
+          { "value": "DEXTERITY", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
+          { "value": "DEXTERITY", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
+          { "value": "DEXTERITY", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
+          { "value": "INTELLIGENCE", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
+          { "value": "INTELLIGENCE", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
+          { "value": "INTELLIGENCE", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
+          { "value": "PERCEPTION", "add": { "val": "duck_ae_hunger", "per": 0.04 }, },
+          { "value": "PERCEPTION", "add": { "val": "duck_ae_thirst", "per": 0.008 }, },
+          { "value": "PERCEPTION", "add": { "val": "duck_ae_fatigue", "per": 0.01 }, },
+        ]
+      }
+    ]
   },
   {
     "type": "perk",
