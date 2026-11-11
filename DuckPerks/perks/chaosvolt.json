@@ -9,24 +9,9 @@
     "category": "Major Perk",
     "enchantments": [
       {
-        "conditions": [ "DUCK_STYLISH" ],
         "values": [
-          { "value": "SPEED", "add": 5 },
-          { "value": "ARMOR", "add": -5 },
-        ],
-      },
-      {
-        "conditions": [ "DUCK_VERY_STYLISH" ],
-        "values": [
-          { "value": "SPEED", "add": 5 },
-          { "value": "ARMOR", "add": -5 },
-        ],
-      },
-      {
-        "conditions": [ "DUCK_SUPREMELY_STYLISH" ],
-        "values": [
-          { "value": "SPEED", "add": 10 },
-          { "value": "ARMOR", "add": -10 },
+          { "value": "SPEED", "add": { "val": "duck_stylish", "per": 1 } },
+          { "value": "ARMOR", "add": { "val": "duck_stylish", "per": -1 } },
         ],
       },
     ],

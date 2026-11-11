@@ -8,6 +8,7 @@ local trait_illiterate = MutationBranchId.new("ILLITERATE")
 local trait_insomnia = MutationBranchId.new("INSOMNIA")
 local trait_pacifist = MutationBranchId.new("PACIFIST")
 local trait_gourmand = MutationBranchId.new("GOURMAND")
+local trait_lighteater = MutationBranchId.new("LIGHTEATER")
 
 -- Skill Id List
 local athletics_skill = SkillId.new("swimming")
@@ -45,6 +46,7 @@ local perk_moonstruck = PerkId.new("duck_perk_moonstruck")
 local perk_nocturnal = PerkId.new("duck_perk_nocturnal")
 local perk_second_chance = PerkId.new("duck_perk_second_chance")
 local perk_gunslinger = PerkId.new("duck_perk_gunslinger")
+local perk_ascetic_empowerment = PerkId.new("duck_perk_ascetic_empowerment")
 local perk_boomstick_blast = PerkId.new("duck_perk_boomstick_blast")
 local perk_closetland = PerkId.new("duck_perk_closetland")
 -- External Perk Id List
@@ -205,6 +207,12 @@ return {
         and character:get_skill_level(pistol_skill) >= 7
         and character:get_skill_level(gun_skill) >= 7
     end,
+  },
+  {
+    id = perk_ascetic_empowerment,
+    major = true,
+    condition_string = locale.gettext("Requires Light Eater and Not Gourmand"),
+    condition = function(character) return not character:has_trait(trait_gourmand) and character:has_trait(trait_lighteater) end,
   },
   {
     id = perk_boomstick_blast,
