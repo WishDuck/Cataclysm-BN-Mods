@@ -54,7 +54,8 @@ local perk_tingly = PerkId.new("duck_perk_tingly")
 -- Helper Functions
 local get_perk_level = function(character) return util.get_char_value_num(character, perk_level_var, 0) end
 
-return {
+---@type unfinalized_perk_data[]
+local ret = {
   -- Minor Perks
   {
     id = perk_sight_beyond_sight,
@@ -94,7 +95,7 @@ return {
   {
     id = perk_ghost_stealth,
     condition_string = locale.gettext("No Condition"),
-    condition = function(character) return true end,
+    condition = function(_) return true end,
   },
   {
     id = perk_catfall,
@@ -106,7 +107,7 @@ return {
   {
     id = perk_perfect_time,
     condition_string = locale.gettext("No Condition"),
-    condition = function(character) return true end,
+    condition = function(_) return true end,
   },
   {
     id = perk_uncanny_dodge,
@@ -178,7 +179,7 @@ return {
     id = perk_moonstruck,
     major = true,
     condition_string = locale.gettext("No Condition"),
-    condition = function(character) return true end,
+    condition = function(_) return true end,
   },
   {
     id = perk_nocturnal,
@@ -216,6 +217,8 @@ return {
     id = perk_closetland,
     major = true,
     condition_string = locale.gettext("No Condition"),
-    condition = function(character) return true end,
+    condition = function(_) return true end,
   },
 }
+
+return ret

@@ -34,7 +34,8 @@ local perk_long_shot = PerkId.new("duck_perk_long_shot")
 local get_perk_level = function(character) return util.get_char_value_num(character, perk_level_var, 0) end
 
 -- All of these perks are minor
-return {
+---@type unfinalized_perk_data[]
+local ret = {
   {
     id = perk_str_up,
     condition_string = locale.gettext("Perk Level 8"),
@@ -109,3 +110,5 @@ return {
     condition = function(character) return character:get_per() >= 10 end,
   },
 }
+
+return ret

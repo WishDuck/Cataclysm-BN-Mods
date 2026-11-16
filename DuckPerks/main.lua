@@ -8,7 +8,9 @@ local debug_trait = MutationBranchId.new("DUCK_DEBUG_ALLTRAITS")
 local menu_perk = PerkId.new("duck_perk_menu_opener")
 
 local perk_lists_dirty = true
+---@type finalized_perk_data[]
 local basic_perks = {}
+---@type finalized_perk_data[]
 local major_perks = {}
 
 -- Perk population
@@ -18,6 +20,9 @@ local major_perks = {}
 
 -- Perk is a perk object
 -- Debug name is a string
+---@param debug_name string
+---@param perk unfinalized_perk_data
+---@return finalized_perk_data?
 local function finalize_perk(perk, debug_name)
   if perk.id == nil or not perk.id:is_valid() then
     debugmsg(
@@ -42,24 +47,30 @@ local function finalize_perk(perk, debug_name)
     )
     return nil
   end
-  if perk.show_if_condition_false == nil or type(perk.show_if_condition_false) ~= "boolean" then
-    perk.show_if_condition_false = true
-  end
-  if perk.major == nil or type(perk.major) ~= "boolean" then perk.major = false end
-  return perk
+  return {
+    id = perk.id,
+    condition_string = perk.condition_string,
+    condition = perk.condition,
+    show_if_condition_false = perk.show_if_condition_false ~= false,
+    description = perk.description or "",
+    has_description = perk.description ~= "",
+    major = perk.major == true,
+  }
 end
 
 -- Perk list is a list of unfinalized perks
 -- Debug name is a string used if they are maldefined
+---@param perk_list unfinalized_perk_data[]
+---@param debug_name string
 mod.add_perks = function(perk_list, debug_name)
   for _, perk in ipairs(perk_list) do
-    local perk = finalize_perk(perk, debug_name)
-    if perk ~= nil then
+    local finalized_perk = finalize_perk(perk, debug_name)
+    if finalized_perk ~= nil then
       perk_lists_dirty = true
-      if perk.major then
-        table.insert(major_perks, perk)
+      if finalized_perk.major then
+        table.insert(major_perks, finalized_perk)
       else
-        table.insert(basic_perks, perk)
+        table.insert(basic_perks, finalized_perk)
       end
     end
   end
@@ -69,6 +80,9 @@ end
 mod.add_perks(require("ported/standing_storm"), "standing_storm")
 mod.add_perks(require("ported/bombastic_slacks"), "bombastic_slacks")
 mod.add_perks(require("perks/chaosvolt"), "chaosvolt")
+if util.has_active_mod("crazy_cataclysm") then
+  mod.add_perks(require("mod_interactions/crazy_cataclysm/perks"), "crazycata")
+end
 
 -- Perk Selection UI
 local perk_exp_var = "DUCK_PERK_EXP" -- EXP you have in total
@@ -176,7 +190,11 @@ mod.select_perks = function(who, perk_list, perks_left, perks_total, title)
           desc = util.color_bad(desc)
           name = util.color_bad(name)
         end
-        desc = desc .. perk.id:obj():get_description()
+        if perk.has_description then
+          desc = desc .. perk.description
+        else
+          desc = desc .. perk.id:obj():get_description()
+        end
 
         ui:add_w_desc(i, name, desc)
       end
@@ -248,7 +266,7 @@ mod.on_monster_killed = function(params)
   local xp_gain = math.max(1, math.floor(monster_hp / hp_per_level))
   local next_level_xp = perk_level.exp_to_next_level(xp, level)
   if xp_gain >= next_level_xp then
-    if (level + 1) % 7 == 0 then
+    if ( (level + 1) % 7 ) == 0 then
       util.mod_char_value_num(player, major_perks_var, 1)
       util.mod_char_value_num(player, major_perks_total_var, 1)
     else

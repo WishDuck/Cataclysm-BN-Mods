@@ -10,21 +10,30 @@ local clothing_morale = MoraleTypeDataId.new("morale_clothing_freshness")
 
 local cleaning_requirement_id = "duck_cleaning_requirement"
 
+---@type MaterialTypeId
 local flesh = MaterialTypeId.new("flesh")
 -- 5 minutes
+---@type integer
 local time_per_cleaning_charge = 30000
 
+---@type TimeDuration
 local minutes_30 = TimeDuration.from_minutes(30)
 
 -- Item Vars
+---@type string
 local dirty_var = "DUCK_DIRTY"
 
 -- Enchantment values
+---@type EnchantmentValueId
 local ench_val_DIRTY_MORALE = EnchantmentValueId.new("DUCK_CLOTHING_MORALE_DIRTY")
+---@type EnchantmentValueId
 local ench_val_NORM_MORALE = EnchantmentValueId.new("DUCK_CLOTHING_MORALE_NORMAL")
+---@type EnchantmentValueId
 local ench_val_CLEAN_MORALE = EnchantmentValueId.new("DUCK_CLOTHING_MORALE_CLEAN")
+---@type EnchantmentValueId
 local ench_val_CLOTHING_DIRTY = EnchantmentValueId.new("DUCK_CLOTHING_TIME_DIRTY")
 
+---@param item Item
 make_dirty = function(item)
   if item:has_flag(flag_CLEAN) then
     item:unset_flag(flag_CLEAN)
@@ -33,24 +42,31 @@ make_dirty = function(item)
   end
 end
 
+---@param ch Character
+---@param item Item
+---@return integer
 clean_morale_mod = function(ch, item)
   if item:has_flag(flag_FILTHY) then
     local base = -15
-    return base + ch:bonus_from_enchantments(base, ench_val_DIRTY_MORALE)
+    return base + math.floor( ch:bonus_from_enchantments(base, ench_val_DIRTY_MORALE) )
   elseif item:has_flag(flag_CLEAN) then
     local base = 10
-    return base + ch:bonus_from_enchantments(base, ench_val_CLEAN_MORALE)
+    return base + math.floor( ch:bonus_from_enchantments(base, ench_val_CLEAN_MORALE) )
   end
   local base = 0
-  return base + ch:bonus_from_enchantments(base, ench_val_NORM_MORALE)
+  return base + math.floor( ch:bonus_from_enchantments(base, ench_val_NORM_MORALE) )
 end
 
+---@param morale integer
+---@return integer
 morale_postprocess = function(morale)
-  res = math.floor(math.sqrt(math.abs(morale)) + 0.5)
+  local res = math.floor(math.sqrt(math.abs(morale)) + 0.5)
   if morale < 0 then return res * -1 end
   return res
 end
 
+---@param avatar Character
+---@return integer
 local reset_morale_val = function(avatar)
   local worn_items = avatar:get_worn_items()
 
@@ -64,7 +80,9 @@ local reset_morale_val = function(avatar)
 end
 
 mod.reset_morale_val_exclude = function(params)
+  ---@type Character
   local avatar = params.who
+  ---@type Item
   local item = params.item
   local morale = reset_morale_val(avatar)
 
@@ -77,7 +95,9 @@ mod.reset_morale_val_exclude = function(params)
 end
 
 mod.reset_morale_val_include = function(params)
+  ---@type Character
   local avatar = params.who
+  ---@type Item
   local item = params.item
   local morale = reset_morale_val(avatar)
 
@@ -89,25 +109,25 @@ mod.reset_morale_val_include = function(params)
   avatar:add_morale(clothing_morale, morale, morale, minutes_30, minutes_30, false)
 end
 
-mod.give_morale_and_sweat = function(info)
-  --gapi.add_msg("Every minute I add a message!")
-
+mod.give_morale_and_sweat = function()
   local avatar = gapi:get_avatar()
-
   local worn_items = avatar:get_worn_items()
-
+  ---@type integer
   local morale = 0
 
+  ---@type integer
   local dirty_mod = 1
-  dirty_mod = dirty_mod + avatar:bonus_from_enchantments(dirty_mod, ench_val_CLOTHING_DIRTY)
+  dirty_mod = dirty_mod + math.floor( avatar:bonus_from_enchantments(dirty_mod, ench_val_CLOTHING_DIRTY) )
   local do_dirty = gapi.get_option_bool("DUCK_FILTHYCLOTHING_REDIRTY_CLOTHING")
+  ---@type integer
   local min_rate = 24
+  ---@type integer
   local max_rate = 1024
   if do_dirty then
     min_rate = gapi.get_option_int("DUCK_FILTHYCLOTHING_DIRTY_RATE_MIN")
     max_rate = gapi.get_option_int("DUCK_FILTHYCLOTHING_DIRTY_RATE_MAX")
   end
-  for index, item in pairs(worn_items) do
+  for _, item in pairs(worn_items) do
     if do_dirty then
       local dirtiness = item:get_var_num(dirty_var, 0)
       if gapi.rng(min_rate, max_rate) <= dirtiness then
@@ -131,7 +151,7 @@ mod.make_clothing_dirty = function(info)
   if info["mon"]:made_of(flesh) then
     local position = info["mon"]:get_pos_ms()
     local items = gapi.get_map():get_items_at(position):as_item_stack():items()
-    for index, item in pairs(items) do
+    for _, item in pairs(items) do
       if item:is_armor() then make_dirty(item) end
     end
   end
@@ -151,8 +171,28 @@ end
 
 get_cleaning_charges = function(item) return math.ceil(item:volume(true):to_milliliter() / 500) end
 
-get_cleaning_requirements =
-  function(item) return requirements.get(cleaning_requirement_id) * get_cleaning_charges(item) end
+
+---@return RequirementData
+get_cleaning_requirements = function(item)
+  local requirement = requirements.get(cleaning_requirement_id)
+  if requirement == nil then
+    gdebug.debugmsg("Somehow the cleaning requirement `duck_cleaning_requirement` was invalid")
+    return RequirementData.new()
+  else
+    return requirement * get_cleaning_charges(item)
+  end
+end
+
+---@return RequirementData
+get_bulk_cleaning_requirements = function()
+  local requirement = requirements.get(cleaning_requirement_id)
+  if requirement == nil then
+    gdebug.debugmsg("Somehow the cleaning requirement `duck_cleaning_requirement` was invalid")
+    return RequirementData.new()
+  else
+    return requirement * 100
+  end
+end
 
 clean_item_params = function(params)
   if mod.get_cleanable_clothes(params) then clean_item(params.item) end
@@ -168,6 +208,7 @@ mod.get_cleanable_clothes = function(params)
   return item:is_armor() and ((not item:has_flag(flag_CLEAN)) or item:has_flag(flag_FILTHY))
 end
 
+---@param params ItemUseParams
 mod.wash = function(params)
   local user = params.user
   local item = params.item
@@ -209,7 +250,7 @@ end
 
 mod.bulk_wash = function(params)
   local user = params.user
-  local cleaning_requirements = requirements.get(cleaning_requirement_id) * 100
+  local cleaning_requirements = get_bulk_cleaning_requirements()
 
   if
     present_error(
