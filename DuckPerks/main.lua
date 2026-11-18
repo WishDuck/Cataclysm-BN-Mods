@@ -284,15 +284,13 @@ mod.ench_cond.add_weapon_cat_condition("duck_wielded_pistol", "PISTOLS")
 mod.ench_cond.add_weapon_cat_condition("duck_wielded_dueling_swords", "DUELING_SWORDS")
 mod.ench_cond.add_weapon_cat_condition("duck_wielded_none", "NONE")
 
--- Fancy Conditions
-mod.ench_cond.init_stylish_condition("duck_stylish_5", 5)
-mod.ench_cond.init_stylish_condition("duck_stylish_10", 10)
-mod.ench_cond.init_stylish_condition("duck_stylish_20", 20)
-
 -- Misc Conditions
 mod.ench_cond.init_sleepy_condition()
 mod.ench_cond.init_near_elec_condition()
 mod.ench_cond.init_no_allies_condition()
+
+-- Character Values
+mod.char_val = require("enchantments/character_value")
 
 -- Loading other files
 require("effects/consume")

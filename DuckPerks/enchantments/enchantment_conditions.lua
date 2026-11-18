@@ -92,32 +92,6 @@ ench_cond.init_no_allies_condition = function()
   game.add_lua_condition("duck_no_allies", cond)
 end
 
-local stylish_count = 0
-
-local stylish_mod = function(item)
-  local res = 0
-  if item:has_flag(JsonFlagId.new("FANCY")) then res = res + 1 end
-
-  if item:has_flag(JsonFlagId.new("SUPER_FANCY")) then res = res + 3 end
-  return res
-end
-
-ench_cond.stylish_update = function()
-  local worn_items = gapi:get_avatar():get_worn_items()
-
-  for index, item in pairs(worn_items) do
-    stylish_count = stylish_count + stylish_mod(item)
-  end
-end
-
-ench_cond.stylish_update_exclude = function(params)
-  local avatar = gapi:get_avatar()
-  local item = params.item
-  ench_cond.stylish_update()
-
-  if avatar:is_worn(item) then stylish_count = stylish_count - stylish_mod(item) end
-end
-
 ench_cond.init_stylish_condition = function(id, count)
   local cond = {}
   cond.character = function(params) return stylish_count >= count end
