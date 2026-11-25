@@ -8,7 +8,7 @@ game.add_hook("on_mon_death", function(...) return mod.make_clothing_dirty(...) 
 game.add_hook("on_character_item_wear", function(...) mod.reset_morale_val_include(...) end)
 game.add_hook("on_character_item_takeoff", function(...) mod.reset_morale_val_exclude(...) end)
 
-gapi.add_on_every_x_hook(TimeDuration.from_minutes(30), function(...) return mod.give_morale_and_sweat(...) end)
+gapi.add_on_every_x_hook(TimeDuration.from_minutes(30), function(...) return mod.give_morale_and_sweat() end)
 
 game.iuse_functions["LUA_WASH"] = function(...) return mod.wash(...) end
 

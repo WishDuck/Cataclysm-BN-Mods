@@ -105,7 +105,7 @@
     "description": "You've always felt like someone was looking out for you upstairs.  Sometimes bullets just dont hit you somehow...",
     "category": "Perk",
     "enchantments": [
-      { "values": [ { "value": "FORCEFIELD_BULLET", "add": 10 } ] },
+      { "values": [ { "value": "FORCEFIELD_BULLET", "add": 5 } ] },
     ],
     "//": "Unported: Lucky Dodge; Reason: Why is it dodging?",
   },
