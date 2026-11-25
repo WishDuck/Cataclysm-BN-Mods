@@ -81,7 +81,7 @@ mod.add_perks(require("ported/standing_storm"), "standing_storm")
 mod.add_perks(require("ported/bombastic_slacks"), "bombastic_slacks")
 mod.add_perks(require("perks/chaosvolt"), "chaosvolt")
 if util.has_active_mod("crazy_cataclysm") then
-  mod.add_perks(require("mod_interactions/crazy_cataclysm/perks"), "crazycata")
+  -- mod.add_perks(require("mod_interactions/crazy_cataclysm/perks"), "crazycata")
 end
 
 -- Perk Selection UI
@@ -266,7 +266,7 @@ mod.on_monster_killed = function(params)
   local xp_gain = math.max(1, math.floor(monster_hp / hp_per_level))
   local next_level_xp = perk_level.exp_to_next_level(xp, level)
   if xp_gain >= next_level_xp then
-    if ( (level + 1) % 7 ) == 0 then
+    if ((level + 1) % 7) == 0 then
       util.mod_char_value_num(player, major_perks_var, 1)
       util.mod_char_value_num(player, major_perks_total_var, 1)
     else
