@@ -1,0 +1,11 @@
+[
+  {
+    "type": "monstergroup",
+    "id": "GROUP_DUCK_RAIN_SCOUT",
+    "//": "TODO: make custom zombie groups instead",
+    "monsters": [
+      { "monster_group": "GROUP_ZOMBIE_BUNKER", "weight": 100 },
+      { "monster_group": "GROUP_AIRCRAFT_CARRIER_TECHNICIANS", "weight": 50 },
+    ],
+  },
+]

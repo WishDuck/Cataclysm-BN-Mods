@@ -1,0 +1,26 @@
+[
+  {
+    "id": "duck_rain_compressed_hydrogen_tank",
+    "type": "CONTAINER",
+    "category": "container",
+    "name": {
+      "str": "hydrogen tank (300L)",
+      "str_pl": "hydrogen tanks (300L)",
+    },
+    "//": "To be made reloadable normally once I get compressed liquids in game",
+    "description": "A large carbon fiber tank designed to store compressed hydrogen. Can only be refilled when properly installed in a vehicle due to the compression valve.",
+    "weight": "10 kg",
+    "volume": "50 L",
+    "price": "100 USD",
+    "price_postapoc": "2 USD",
+    "to_hit": -4,
+    "bashing": 5,
+    "material": "carbon_fiber",
+    "symbol": "}",
+    "color": "light_cyan",
+    "contains": "50L",
+    "seals": true,
+    "watertight": true,
+    "flags": [ "NO_RELOAD" ],
+  },
+]

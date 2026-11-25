@@ -1,0 +1,7 @@
+[
+  {
+    "type": "monstergroup",
+    "id": "GROUP_DUCK_RAIN_TURRET",
+    "monsters": [ { "monster": "mon_duck_sun_turret_light", "weight": 100 } ],
+  },
+]

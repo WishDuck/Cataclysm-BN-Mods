@@ -1,0 +1,13 @@
+[
+  {
+    "type": "GENERIC",
+    "id": "duck_rain_wing_carbon_solar",
+    "name": { "str": "R.A.I.N aerofoil" },
+    "description": "A section of aircraft wing made of carbon fiber fabric, with a thin solar panel layered over the top, over ridid carbon fiber ribs and stringers.  Wings allow a vehicle to fly, but require a propeller and enough velocity to take off.",
+    "copy-from": "wing_carbon_item",
+    "relative": {
+      "price": "10 USD",
+      "price_postapoc": "1 USD",
+    },
+  },
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "duck_rain_propeller_carbon",
+    "type": "GENERIC",
+    "category": "veh_parts",
+    "name": { "str": "carbon fiber aircraft propeller" },
+    "description": "A carbon fiber propeller and spinner from an airplane.  When attached to a vehicle, engine power will provide lift to any installed wings, allowing it to take off.",
+    "price": "6000 USD",
+    "price_postapoc": "50 USD",
+    "weight": "3 kg",
+    "volume": "20 L",
+    "looks_like": "small_helicopter_rotor",
+    "material": [ "carbon_fiber" ],
+    "symbol": "X",
+    "color": "light_gray",
+  },
+]

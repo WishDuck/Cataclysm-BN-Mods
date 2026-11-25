@@ -1,0 +1,39 @@
+[
+  {
+    "id": "duck_rain_compressed_hydrogen_tank",
+    "type": "vehicle_part",
+    "name": { "str": "compressed hydrogen tank (300L)" },
+    "item": "duck_rain_compressed_hydrogen_tank",
+    "location": "fuel_source",
+    "symbol": "O",
+    "broken_color": "red",
+    "durability": 100,
+    "description": "A storage space for holding compressed hydrogen.  If filled with the hydrogen, the engine will automatically draw fuel from the tank when the engine is on.  If filled with water, you can access the water from a water faucet, if one is installed in the vehicle.  You can also use a rubber hose to siphon liquids out of a tank.",
+    "size": "50 L",
+    "fuel_type": "c_hydrogen_gas",
+    "damage_modifier": 80,
+    "breaks_into": [ { "item": "plastic_chunk", "count": [ 10, 40 ] } ],
+    "requirements": {
+      "install": {
+        "skills": [ [ "mechanics", 1 ] ],
+        "time": "20 m",
+        "qualities": [
+          { "id": "WRENCH", "level": 1 },
+          { "id": "DRILL", "level": 1 },
+        ],
+      },
+      "removal": {
+        "skills": [ [ "mechanics", 1 ] ],
+        "time": "10 m",
+        "qualities": [ { "id": "WRENCH", "level": 1 } ],
+      },
+      "repair": {
+        "skills": [ [ "mechanics", 1 ] ],
+        "time": "10 m",
+        "using": [ [ "soldering_standard", 5 ], [ "plastics", 1 ] ],
+      },
+    },
+    "flags": [ "FLUIDTANK" ],
+    "damage_reduction": { "all": 9, "stab": 0 },
+  },
+]

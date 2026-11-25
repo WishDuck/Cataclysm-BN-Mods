@@ -1,0 +1,13 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "rain_expansion",
+    "name": "<color_pink>R.A.I.N.</color>",
+    "authors": [ "Wishduck" ],
+    "maintainers": [ "Wishduck" ],
+    "description": "Adds the Runic Anomaly Investigation Network (R.A.I.N.). Which currently adds 1 vehicle based lab and multiple scattered outposts.",
+    "category": "content",
+    "lua_api_version": 2,
+    "dependencies": [ "bn" ],
+  },
+]

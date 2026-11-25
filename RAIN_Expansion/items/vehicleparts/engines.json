@@ -1,0 +1,17 @@
+[
+  {
+    "id": "duck_rain_hydrogen_engine_small",
+    "type": "TOOL",
+    "looks_like": "t_plut_generator",
+    "name": "R.A.I.N. hydrogen engine",
+    "description": "While not the most powerful motor, this one works well for smaller R.A.I.N. vehicles which need a lightweight renewable power source for it's size.",
+    "weight": "25 kg",
+    "volume": "5 L",
+    "price": "150000 USD",
+    "price_postapoc": "500 USD",
+    "material": "steel",
+    "symbol": "0",
+    "color": "light_green",
+    "category": "scrap_electronics",
+  },
+]

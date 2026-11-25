@@ -1,0 +1,16 @@
+[
+  {
+    "type": "vehicle_group",
+    "id": "duck_rain_scoutveh",
+    "vehicles": [
+      [
+        "duck_rain_scout_plane_battery",
+        50,
+      ],
+      [
+        "duck_rain_scout_plane_hydrogen",
+        20,
+      ],
+    ],
+  },
+]

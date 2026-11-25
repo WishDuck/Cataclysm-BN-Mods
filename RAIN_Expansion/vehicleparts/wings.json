@@ -1,0 +1,36 @@
+[
+  {
+    "abstract": "duck_rain_wing_carbon_solar",
+    "copy-from": "wing_carbon",
+    "type": "vehicle_part",
+    "name": "R.A.I.N solar carbon fiber wing",
+    "item": "duck_rain_wing_carbon_solar",
+    "epower": 10,
+    "extend": { "flags": [ "SOLAR_PANEL" ] },
+    "shapes": [
+      { "direction": "left", "symbol": "y" },
+      { "direction": "right", "symbol": "u" },
+      { "direction": "horizontal", "symbol": "h" },
+    ],
+  },
+  {
+    "abstract": "duck_rain_wing_carbon_solar_external",
+    "copy-from": "duck_rain_wing_carbon_solar",
+    "type": "vehicle_part",
+    "name": "external R.A.I.N solar carbon fiber wing",
+    "location": "structural",
+    "extend": {
+      "flags": [
+        "PROTUSION",
+        "EXTENDABLE",
+        "BOARDABLE",
+        "SEAT_REQUIRES_BALANCE",
+      ],
+    },
+    "shapes": [
+      { "direction": "left", "symbol": "y" },
+      { "direction": "right", "symbol": "u" },
+      { "direction": "horizontal", "symbol": "h" },
+    ],
+  },
+]

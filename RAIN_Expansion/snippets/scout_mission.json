@@ -1,0 +1,40 @@
+[
+  {
+    "type": "snippet",
+    "category": "duck_rain_scout_mission",
+    "text": [
+      {
+        "id": "duck_rain_scout_mission_migo_1",
+        "text": "Spotted unknown tower, human speech present, unintelligible meaning. Structure appears to have ample self sustaining biological heat producers. Area appears to have unique chemical properties, may be useful to exploit for explosive production.",
+      },
+      {
+        "id": "duck_rain_scout_mission_migo_2",
+        "text": "Refuelling station overtaken by the pink aliens. Appears to be a foward camp. Constant battle between them and the zombies appears to be happening. Area may be good for reclaimation and experiementation.",
+      },
+      {
+        "id": "duck_rain_scout_mission_fungal_1",
+        "text": "Area in a complete haze, local wildlife completely covered in mushrooms. One zombie became mushroom convered, either grew stronger afterwards or was weakened by exposure. Deployed gas mask and all 4 SGB, target was elimnated. Setting up camp a few miles away.",
+      },
+      {
+        "id": "duck_rain_scout_mission_fungal_2",
+        "text": "Located human survivors, seemed to have a fungal infection. Refused antifungals and suggested local berries growing near unknown fungal plants. Did not consume; Potentially source of infections.",
+      },
+      {
+        "id": "duck_rain_scout_mission_fungal_3",
+        "text": "Human esque survivor spotted, appears to be growing herds of fungalized creatures, marked as no-fly zone for now. Potential escalation: excellent experimental target.",
+      },
+      {
+        "id": "duck_rain_scout_mission_ws_1",
+        "text": "Another one of them spotted. Need to add protection to propellers, managed to hit one, killed the plane instantly, attempting recovery, may fail.",
+      },
+      {
+        "id": "duck_rain_scout_mission_ws_2",
+        "text": "Managed to find one, but they just blinked away, the other outran me. Teleporter managed to heal the other, may be useful for further investigation.",
+      },
+      {
+        "id": "duck_rain_scout_mission_ws_3",
+        "text": "They seem to almost have seers, noticed one of their camps on the horizon, but they were already gone, and they didn't return since. Analysis: they may not be hostile.",
+      },
+    ],
+  },
+]

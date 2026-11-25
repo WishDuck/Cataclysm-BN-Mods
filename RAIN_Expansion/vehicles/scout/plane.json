@@ -1,0 +1,82 @@
+[
+  {
+    "type": "vehicle",
+    "id": "duck_rain_scout_plane_battery",
+    "name": "R.A.I.N. Scout Plane Mk I",
+    "blueprint_origin": {
+      "x": 5,
+      "y": 2,
+    },
+    "blueprint": [
+      "   W  ",
+      "W  W  ",
+      "WCCFSP",
+      "W  W  ",
+      "   W  ",
+    ],
+    "palette": {
+      "W": [
+        "duck_rain_wing_carbon_solar_external_horizontal",
+      ],
+      "C": [
+        "frame_carbon_vertical",
+        "cargo_space_carbon",
+        "large_storage_battery",
+      ],
+      "F": [
+        "frame_carbon_vertical",
+      ],
+      "S": [
+        "frame_carbon_vertical",
+        "seat",
+        "seatbelt",
+        "controls",
+        "engine_electric_large",
+      ],
+      "P": [
+        "duck_rain_propeller_carbon",
+      ],
+    },
+  },
+  {
+    "type": "vehicle",
+    "id": "duck_rain_scout_plane_hydrogen",
+    "name": "R.A.I.N. Scout Plane Mk II",
+    "blueprint_origin": {
+      "x": 5,
+      "y": 2,
+    },
+    "blueprint": [
+      "   W  ",
+      "W  W  ",
+      "WCCFSP",
+      "W  W  ",
+      "   W  ",
+    ],
+    "palette": {
+      "W": [
+        "duck_rain_wing_carbon_solar_external_horizontal",
+      ],
+      "C": [
+        "frame_carbon_vertical",
+        "cargo_space_carbon",
+        "medium_storage_battery",
+      ],
+      "F": [
+        "frame_carbon_vertical",
+        "duck_rain_compressed_hydrogen_tank",
+        "duck_rain_hydrogen_converter",
+      ],
+      "S": [
+        "frame_carbon_vertical",
+        "seat",
+        "seatbelt",
+        "controls",
+        "duck_rain_hydrogen_engine_small",
+      ],
+      "P": [
+        "duck_rain_propeller_carbon",
+      ],
+    },
+  },
+]

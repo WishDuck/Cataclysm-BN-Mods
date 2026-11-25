@@ -1,0 +1,30 @@
+[
+  {
+    "id": "duck_rain_propeller_carbon",
+    "copy-from": "propeller_rotors",
+    "type": "vehicle_part",
+    "name": "aircraft propeller",
+    "item": "duck_rain_propeller_carbon",
+    "propeller_diameter": 3,
+    "requirements": {
+      "install": {
+        "skills": [ [ "mechanics", 6 ] ],
+        "time": "40 m",
+        "using": [ [ "welding_standard", 20 ] ],
+      },
+      "removal": {
+        "skills": [ [ "mechanics", 6 ] ],
+        "qualities": [ { "id": "SAW_M", "level": 1 } ],
+      },
+      "repair": {
+        "skills": [ [ "mechanics", 7 ] ],
+        "time": "10 m",
+        "using": [ [ "vehicle_repair_carbon", 3 ] ],
+      },
+    },
+    "durability": 100,
+    "damage_modifier": 80,
+    "breaks_into": "ig_vp_carbon",
+    "damage_reduction": { "all": 28 },
+  },
+]

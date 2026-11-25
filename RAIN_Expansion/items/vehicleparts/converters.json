@@ -1,0 +1,17 @@
+[
+  {
+    "id": "duck_rain_hydrogen_converter",
+    "type": "TOOL",
+    "looks_like": "f_air_filter",
+    "name": "R.A.I.N. hydrogen producer",
+    "description": "A contraption that almost looks haphazardly constructed. An industrial air fan on one end, and an outlet on the other, with 2 hoses perfect for attaching to vehicle fuel systems. One of which has a permanent fixture pointing downwards, almost as if it was suppost to be unused. Takes power and generates hydrogen gas, perfect for powering various R.A.I.N. equipment.",
+    "weight": "10 kg",
+    "volume": "25 L",
+    "price": "100 USD",
+    "price_postapoc": "5 USD",
+    "material": "steel",
+    "symbol": "0",
+    "color": "light_green",
+    "category": "scrap_electronics",
+  },
+]
