@@ -4,7 +4,7 @@
 ---@field condition fun(character: Character): boolean Function for the actual condition
 ---@field show_if_condition_false boolean? default true bool for hiding if condition fails
 ---@field description string? default empty string -> overrides perk menu description
----@field has_description boolean? 
+---@field has_description boolean?
 ---@field major boolean? default false, weather it is a major perk or not
 unfinalized_perk_data = {}
 
@@ -17,4 +17,3 @@ unfinalized_perk_data = {}
 ---@field description string
 ---@field major boolean
 finalized_perk_data = {}
-

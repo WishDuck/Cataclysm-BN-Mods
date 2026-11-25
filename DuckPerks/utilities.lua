@@ -33,9 +33,7 @@ end
 ---@return boolean
 util.has_active_mod = function(mod_id)
   for _, mod in ipairs(game["active_mods"]) do
-    if mod == mod_id then
-      return true
-    end
+    if mod == mod_id then return true end
   end
   return false
 end

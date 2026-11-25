@@ -48,13 +48,13 @@ end
 clean_morale_mod = function(ch, item)
   if item:has_flag(flag_FILTHY) then
     local base = -15
-    return base + math.floor( ch:bonus_from_enchantments(base, ench_val_DIRTY_MORALE) )
+    return base + math.floor(ch:bonus_from_enchantments(base, ench_val_DIRTY_MORALE))
   elseif item:has_flag(flag_CLEAN) then
     local base = 10
-    return base + math.floor( ch:bonus_from_enchantments(base, ench_val_CLEAN_MORALE) )
+    return base + math.floor(ch:bonus_from_enchantments(base, ench_val_CLEAN_MORALE))
   end
   local base = 0
-  return base + math.floor( ch:bonus_from_enchantments(base, ench_val_NORM_MORALE) )
+  return base + math.floor(ch:bonus_from_enchantments(base, ench_val_NORM_MORALE))
 end
 
 ---@param morale integer
@@ -117,7 +117,7 @@ mod.give_morale_and_sweat = function()
 
   ---@type integer
   local dirty_mod = 1
-  dirty_mod = dirty_mod + math.floor( avatar:bonus_from_enchantments(dirty_mod, ench_val_CLOTHING_DIRTY) )
+  dirty_mod = dirty_mod + math.floor(avatar:bonus_from_enchantments(dirty_mod, ench_val_CLOTHING_DIRTY))
   local do_dirty = gapi.get_option_bool("DUCK_FILTHYCLOTHING_REDIRTY_CLOTHING")
   ---@type integer
   local min_rate = 24
@@ -170,7 +170,6 @@ present_error = function(error, desc)
 end
 
 get_cleaning_charges = function(item) return math.ceil(item:volume(true):to_milliliter() / 500) end
-
 
 ---@return RequirementData
 get_cleaning_requirements = function(item)
