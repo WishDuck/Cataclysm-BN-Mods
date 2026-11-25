@@ -190,11 +190,11 @@ mod.select_perks = function(who, perk_list, perks_left, perks_total, title)
           desc = util.color_bad(desc)
           name = util.color_bad(name)
         end
-        if perk.has_description then
-          desc = desc .. perk.description
-        else
-          desc = desc .. perk.id:obj():get_description()
-        end
+        -- if perk.has_description then
+        --   desc = desc .. perk.description
+        -- else
+        desc = desc .. perk.id:obj():get_description()
+        -- end
 
         ui:add_w_desc(i, name, desc)
       end

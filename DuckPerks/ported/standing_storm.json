@@ -190,7 +190,7 @@
     "max_duration": "30 s",
     "show_in_info": true,
     "base_enchantments": [
-      { "values": [ { "value": "UNCANNY_DODGE", "add": -0.2 } ] },
+      { "values": [ { "value": "UNCANNY_DODGE", "add": 20 } ] },
     ],
   },
   {
@@ -202,7 +202,7 @@
     "enchantments": [
       {
         "hit_me_effect": [ { "id": "duck_perk_no_uncanny_dodge" } ],
-        "values": [ { "value": "UNCANNY_DODGE", "add": 0.2 } ],
+        "values": [ { "value": "UNCANNY_DODGE", "add": 20 } ],
       },
     ],
   },
