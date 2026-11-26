@@ -72,7 +72,7 @@ local reset_morale_val = function(avatar)
 
   local morale = 0
 
-  for index, item in pairs(worn_items) do
+  for _, item in pairs(worn_items) do
     morale = morale + clean_morale_mod(avatar, item)
   end
 
@@ -157,6 +157,8 @@ mod.make_clothing_dirty = function(info)
   end
 end
 
+---@param error string Title for UI list to display
+---@param desc string Extended description for UI list to display
 present_error = function(error, desc)
   local ui_error = UiList.new()
   ui_error:title_color(Color.c_white)
@@ -169,6 +171,8 @@ present_error = function(error, desc)
   return query
 end
 
+---@param item Item
+---@return integer
 get_cleaning_charges = function(item) return math.ceil(item:volume(true):to_milliliter() / 500) end
 
 ---@return RequirementData
@@ -189,19 +193,30 @@ get_bulk_cleaning_requirements = function()
     gdebug.debugmsg("Somehow the cleaning requirement `duck_cleaning_requirement` was invalid")
     return RequirementData.new()
   else
-    return requirement * 100
+    return requirement * 50
   end
 end
 
+---@type integer
+local volume_sum = 0
+
+---@param params bulk_item_params
+get_volume_sum_params = function(params)
+  if mod.get_cleanable_clothes(params) then volume_sum = volume_sum + math.ceil(params.item:volume(true):to_liter()) end
+end
+
+---@param params bulk_item_params
 clean_item_params = function(params)
   if mod.get_cleanable_clothes(params) then clean_item(params.item) end
 end
 
+---@param item Item
 clean_item = function(item)
   item:set_flag(flag_CLEAN)
   item:unset_flag(flag_FILTHY)
 end
 
+---@param params bulk_item_params
 mod.get_cleanable_clothes = function(params)
   local item = params.item
   return item:is_armor() and ((not item:has_flag(flag_CLEAN)) or item:has_flag(flag_FILTHY))
@@ -211,7 +226,6 @@ end
 mod.wash = function(params)
   local user = params.user
   local item = params.item
-  local position = params.pos
   local cleaning_clothes_params = {}
   cleaning_clothes_params.title = locale.gettext("Clean What?")
   cleaning_clothes_params.failure = locale.gettext("You have nothing to clean.")
@@ -251,6 +265,20 @@ mod.bulk_wash = function(params)
   local user = params.user
   local cleaning_requirements = get_bulk_cleaning_requirements()
 
+  -- While this would be very hard to ever reach lets go for it
+  -- Maximum load is 50 L
+  volume_sum = 0
+  local cleaning_params_pre = {}
+  cleaning_params_pre.func = get_volume_sum_params
+  gapi.map_inv_edit(cleaning_params_pre)
+
+  if volume_sum == 0 then
+    present_error( locale.gettext("There are no nearby clothes to clean" ), "" )
+    return
+  end
+
+  cleaning_requirements = cleaning_requirements * ( math.ceil(volume_sum / 50) )
+  
   if
     present_error(
       locale.gettext("Are you sure you want to clean all nearby clothes?"),
